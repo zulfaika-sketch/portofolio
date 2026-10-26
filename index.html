@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Pribadi & Studio - Sistem Informasi</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          },
+          colors: {
+            alabaster: '#FFFDF9',
+            warmBeige: '#FAF5F0',
+            dustyRose: '#E58C9A',
+            dustyRoseDark: '#d47382',
+            dustyRoseSoft: '#FCECEF',
+            sageMatcha: '#9EB8A0',
+            sageSoft: '#EEF3EE',
+            softLavender: '#E8E2F4',
+            charcoal: '#2D2527',
+            mutedGray: '#6E6265',
+            roseBorder: '#F2E6E6',
+          },
+          boxShadow: {
+            'soft': '0 4px 24px -2px rgba(229, 140, 154, 0.12), 0 2px 8px -2px rgba(45, 37, 39, 0.04)',
+            'soft-lg': '0 12px 36px -4px rgba(229, 140, 154, 0.18), 0 4px 12px -2px rgba(45, 37, 39, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FFFDF9;
+      color: #2D2527;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    .font-playfair { font-family: 'Playfair Display', Georgia, serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-alabaster selection:bg-dustyRose selection:text-white">
+
+  <!-- A. FLOATING NAVBAR -->
+  <header class="sticky top-4 z-40 px-4 max-w-6xl mx-auto w-full">
+    <nav class="bg-white/85 backdrop-blur-md border border-roseBorder rounded-full px-5 sm:px-6 py-3 flex items-center justify-between shadow-soft">
+      <!-- Logo / Nama -->
+      <a href="#home" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-full bg-dustyRoseSoft border border-dustyRose/40 flex items-center justify-center text-dustyRose font-bold text-sm group-hover:scale-105 transition-transform">
+          ✦
+        </span>
+        <span class="font-bold text-base sm:text-lg tracking-tight text-charcoal">
+          clara<span class="text-dustyRose">.si</span>
+        </span>
+      </a>
+
+      <!-- Menu Link Tengah -->
+      <div class="hidden md:flex items-center gap-6 text-xs font-semibold text-mutedGray">
+        <a href="#home" class="hover:text-dustyRose transition-colors">Home</a>
+        <a href="#projects" class="hover:text-dustyRose transition-colors">Projects</a>
+        <a href="#about" class="hover:text-dustyRose transition-colors">About</a>
+        <a href="#skills" class="hover:text-dustyRose transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-dustyRose transition-colors">Experience</a>
+        <a href="#contact" class="hover:text-dustyRose transition-colors">Contact</a>
+      </div>
+
+      <!-- Action Kanan: Download CV + Admin CMS Lock -->
+      <div class="flex items-center gap-2">
+        <a id="navCvBtn" href="#" target="_blank" rel="noopener noreferrer" class="bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-semibold px-4 py-2 rounded-full transition-all shadow-sm flex items-center gap-1.5">
+          <i class="ph-bold ph-file-arrow-down text-sm"></i>
+          <span>Download CV</span>
+        </a>
+
+        <!-- Tombol Gembok Admin CMS -->
+        <button id="openCmsTrigger" title="Admin CMS Panel" class="w-8 h-8 rounded-full border border-roseBorder bg-warmBeige hover:bg-dustyRoseSoft text-charcoal hover:text-dustyRose flex items-center justify-center text-base transition-colors">
+          <i class="ph-bold ph-lock-key"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6 pb-20 flex flex-col gap-24">
+
+    <!-- B. HERO SECTION -->
+    <section id="home" class="pt-10 sm:pt-16 pb-6 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+      <div class="flex-1 flex flex-col items-start gap-5 max-w-2xl">
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sageSoft border border-sageMatcha/40 text-xs font-bold text-charcoal">
+          <span class="w-2 h-2 rounded-full bg-sageMatcha animate-pulse"></span>
+          <span>Available for Internship, Bootcamp & Freelance Projects</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.18] text-charcoal">
+          Mahasiswi <span class="font-playfair italic font-normal text-dustyRose">Sistem Informasi</span> yang Memadukan Logika Koding & Estetika Visual.
+        </h1>
+
+        <!-- Subheadline / Bio -->
+        <p class="text-mutedGray text-sm sm:text-base leading-relaxed">
+          Menghubungkan pola pikir bisnis & pemasaran dengan rekayasa perangkat lunak, antarmuka UI/UX Figma yang presisi, serta visual branding yang bercerita. Siap berkontribusi nyata dalam proyek teknologi.
+        </p>
+
+        <!-- Quick Social Icon Buttons -->
+        <div class="flex flex-wrap items-center gap-2 pt-1" id="heroSocialBar">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-3 pt-3">
+          <a href="#projects" class="bg-charcoal hover:bg-black text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-full transition-all shadow-sm flex items-center gap-2">
+            <span>Lihat Karya Saya</span>
+            <i class="ph-bold ph-arrow-down"></i>
+          </a>
+          <a href="#contact" class="bg-white hover:bg-warmBeige border border-roseBorder text-charcoal text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-full transition-all shadow-sm flex items-center gap-2">
+            <span>Hubungi Saya</span>
+            <i class="ph-bold ph-paper-plane-tilt"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Foto Profil + Floating Badges -->
+      <div class="relative shrink-0 flex items-center justify-center">
+        <!-- Glow Aura -->
+        <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-dustyRose/20 via-softLavender/30 to-sageMatcha/20 blur-2xl transform scale-110"></div>
+        
+        <!-- Main Image Circle -->
+        <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-2 bg-white border-2 border-roseBorder shadow-soft-lg">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Clara Profile" class="w-full h-full object-cover rounded-full">
+        </div>
+
+        <!-- Floating Badge 1: UI/UX Figma -->
+        <div class="absolute -top-2 -left-4 bg-white/95 backdrop-blur-sm border border-roseBorder px-3.5 py-1.5 rounded-full shadow-soft flex items-center gap-2 text-xs font-bold text-charcoal">
+          <span class="w-5 h-5 rounded-full bg-dustyRoseSoft flex items-center justify-center text-dustyRose">🎨</span>
+          <span>UI/UX Figma</span>
+        </div>
+
+        <!-- Floating Badge 2: Web Dev -->
+        <div class="absolute bottom-4 -left-6 bg-white/95 backdrop-blur-sm border border-roseBorder px-3.5 py-1.5 rounded-full shadow-soft flex items-center gap-2 text-xs font-bold text-charcoal">
+          <span class="w-5 h-5 rounded-full bg-sageSoft flex items-center justify-center text-sageMatcha">💻</span>
+          <span>Web & Coding</span>
+        </div>
+
+        <!-- Floating Badge 3: Creative Design -->
+        <div class="absolute top-1/2 -right-6 -translate-y-1/2 bg-white/95 backdrop-blur-sm border border-roseBorder px-3.5 py-1.5 rounded-full shadow-soft flex items-center gap-2 text-xs font-bold text-charcoal">
+          <span class="w-5 h-5 rounded-full bg-softLavender flex items-center justify-center text-[#7e60b8]">✦</span>
+          <span>Apparel & Brand</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- C. GALERI PORTOFOLIO & STUDI KASUS -->
+    <section id="projects" class="pt-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 text-dustyRose text-xs font-extrabold uppercase tracking-widest mb-1.5">
+            <span>✦ KARYA & EKSPERIMEN</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-charcoal tracking-tight">Galeri Portofolio & Studi Kasus</h2>
+          <p class="text-mutedGray text-xs sm:text-sm mt-1 max-w-lg">Jelajahi perancangan antarmuka, aplikasi web fungsional, dan identitas visual yang telah saya buat.</p>
+        </div>
+
+        <!-- Interactive Filter Buttons -->
+        <div class="flex flex-wrap gap-2" id="filterContainer">
+          <button data-cat="all" class="filter-btn active bg-charcoal text-white text-xs font-bold px-4 py-2 rounded-full transition-all">Semua</button>
+          <button data-cat="UI/UX & Figma" class="filter-btn bg-white border border-roseBorder text-mutedGray hover:text-charcoal text-xs font-bold px-4 py-2 rounded-full transition-all">UI/UX & Figma</button>
+          <button data-cat="Web & Coding" class="filter-btn bg-white border border-roseBorder text-mutedGray hover:text-charcoal text-xs font-bold px-4 py-2 rounded-full transition-all">Web & Coding</button>
+          <button data-cat="Graphic & Apparel Design" class="filter-btn bg-white border border-roseBorder text-mutedGray hover:text-charcoal text-xs font-bold px-4 py-2 rounded-full transition-all">Graphic & Apparel Design</button>
+        </div>
+      </div>
+
+      <!-- 3-Column Responsive Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyProjectsState" class="hidden text-center py-16 bg-white border border-roseBorder rounded-2xl">
+        <p class="text-mutedGray text-sm">Belum ada proyek dalam kategori ini.</p>
+      </div>
+    </section>
+
+    <!-- D. TENTANG SAYA & PENDIDIKAN -->
+    <section id="about" class="pt-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Cerita Singkat (7 cols) -->
+        <div class="lg:col-span-7 bg-white border border-roseBorder rounded-2xl p-6 sm:p-8 shadow-soft flex flex-col gap-4">
+          <div class="inline-flex items-center gap-2 text-dustyRose text-xs font-extrabold uppercase tracking-widest">
+            <span>✦ LATAR BELAKANG</span>
+          </div>
+          <h2 class="text-2xl font-extrabold text-charcoal">Menghubungkan Dunia Bisnis & Sains Komputer</h2>
+          <div class="space-y-3.5 text-xs sm:text-sm text-mutedGray leading-relaxed">
+            <p>
+              Berawal dari pendidikan formal bidang <strong>Pemasaran</strong>, saya terbiasa memahami perilaku konsumen, psikologi pembelian, strategi komunikasi produk, dan analisis data transaksi. Fondasi bisnis ini membentuk cara pandang saya bahwa produk digital tidak hanya harus bekerja, namun juga harus relevan dan memberi solusi nyata.
+            </p>
+            <p>
+              Ketertarikan pada bagaimana solusi tersebut dibangun secara teknis membawa saya melanjutkan studi sarjana di jurusan <strong>Sistem Informasi</strong>. Di sini saya memperdalam logika algoritma pemrograman, rekayasa basis data, arsitektur antarmuka (UI/UX), hingga pengolahan statistik data.
+            </p>
+            <p>
+              Kombinasi ini menjadikan saya seorang kreator yang mampu berkomunikasi dengan tim bisnis sekaligus berkolaborasi intensif dengan tim pengembang software.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Pendidikan & Pelatihan (5 cols) -->
+        <div class="lg:col-span-5 bg-warmBeige/60 border border-roseBorder rounded-2xl p-6 sm:p-8 shadow-soft flex flex-col gap-5">
+          <div class="flex items-center gap-2 text-xs font-extrabold text-charcoal uppercase tracking-wider">
+            <i class="ph-bold ph-graduation-cap text-base text-dustyRose"></i>
+            <span>Pendidikan & Pelatihan</span>
+          </div>
+
+          <div class="space-y-6 relative border-l-2 border-roseBorder ml-2 pl-4">
+            <!-- Timeline Item 1 -->
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-3 h-3 rounded-full bg-dustyRose ring-4 ring-white"></span>
+              <span class="text-[11px] font-bold text-dustyRose block mb-0.5">2023 &mdash; Sekarang</span>
+              <h4 class="text-sm font-bold text-charcoal">S1 Sistem Informasi</h4>
+              <p class="text-xs text-mutedGray">Universitas &bull; Fokus Rekayasa Sistem, UI/UX & Data Analytics</p>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-3 h-3 rounded-full bg-sageMatcha ring-4 ring-white"></span>
+              <span class="text-[11px] font-bold text-sageMatcha block mb-0.5">2024 &mdash; 2025</span>
+              <h4 class="text-sm font-bold text-charcoal">Software Engineering Bootcamp</h4>
+              <p class="text-xs text-mutedGray">Pelatihan Intensif Frontend Web, Git Workflow & Team Collaboration</p>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-3 h-3 rounded-full bg-softLavender ring-4 ring-white"></span>
+              <span class="text-[11px] font-bold text-[#8668c2] block mb-0.5">2020 &mdash; 2023</span>
+              <h4 class="text-sm font-bold text-charcoal">SMK Pemasaran (Bisnis Daring)</h4>
+              <p class="text-xs text-mutedGray">Komunikasi Pelanggan, Strategi Pemasaran Digital & Riset Pasar</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- E. SKILLS & TECH STACK (3 KELOMPOK) -->
+    <section id="skills" class="pt-6">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 text-dustyRose text-xs font-extrabold uppercase tracking-widest mb-1.5">
+          <span>✦ KEAHLIAN & PERALATAN</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-charcoal">Skills & Tech Stack</h2>
+        <p class="text-mutedGray text-xs sm:text-sm mt-1">Perpaduan keahlian visual, kemampuan coding modern, dan kompetensi operasional bisnis.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Kolom 1: Design & Creative -->
+        <div class="bg-white border border-roseBorder rounded-2xl p-6 shadow-soft flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-xl bg-dustyRoseSoft text-dustyRose flex items-center justify-center text-xl">
+            <i class="ph-bold ph-paint-brush"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-charcoal">Design & Creative</h3>
+            <p class="text-xs text-mutedGray mt-0.5">Eksplorasi antarmuka digital dan grafis fisik.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Figma</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">UI/UX Prototyping</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Apparel & Merch</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Brand Storytelling</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Adobe Illustrator</span>
+          </div>
+        </div>
+
+        <!-- Kolom 2: Programming & Tech -->
+        <div class="bg-white border border-roseBorder rounded-2xl p-6 shadow-soft flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-xl bg-sageSoft text-sageMatcha flex items-center justify-center text-xl">
+            <i class="ph-bold ph-code"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-charcoal">Programming & Tech</h3>
+            <p class="text-xs text-mutedGray mt-0.5">Sintaks koding, basis data, dan analitik.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">HTML5 & CSS3</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Tailwind CSS</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">JavaScript (ES6+)</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Java OOP</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">R Language (Stats)</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Git & GitHub</span>
+          </div>
+        </div>
+
+        <!-- Kolom 3: Business & Soft Skills -->
+        <div class="bg-white border border-roseBorder rounded-2xl p-6 shadow-soft flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-xl bg-softLavender text-[#7f5dbb] flex items-center justify-center text-xl">
+            <i class="ph-bold ph-briefcase"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-charcoal">Business & Soft Skills</h3>
+            <p class="text-xs text-mutedGray mt-0.5">Manajemen alur kerja dan relasi pengguna.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Digital Marketing</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Customer Communication</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Administrasi Data</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Problem Solving</span>
+            <span class="bg-warmBeige text-charcoal border border-roseBorder text-xs font-semibold px-3 py-1.5 rounded-lg">Copywriting</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- F. PENGALAMAN & PENCAPAIAN -->
+    <section id="experience" class="pt-6">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 text-dustyRose text-xs font-extrabold uppercase tracking-widest mb-1.5">
+          <span>✦ JEJAK LANGKAH</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-charcoal">Pengalaman & Pencapaian</h2>
+        <p class="text-mutedGray text-xs sm:text-sm mt-1">Aktivitas riil membangun proyek, kolaborasi tim, dan operasional bisnis.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Experience 1 -->
+        <div class="bg-white border border-roseBorder rounded-2xl p-6 shadow-soft flex flex-col justify-between gap-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-dustyRose uppercase tracking-wider block">Inisiatif Mandiri</span>
+            <h3 class="font-bold text-base text-charcoal leading-snug">Founder & Designer Brand Apparel Independen</h3>
+            <p class="text-xs text-mutedGray leading-relaxed">
+              Mengembangkan lini pakaian berkonsep visual pastel & tipografi minimalis, mencakup pembuatan mockup garmen, manajemen inventaris, dan optimasi etalase digital.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-roseBorder text-[11px] font-semibold text-mutedGray flex items-center justify-between">
+            <span>2023 &mdash; Sekarang</span>
+            <span class="text-dustyRose font-bold">Produk Fisik & Web</span>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="bg-white border border-roseBorder rounded-2xl p-6 shadow-soft flex flex-col justify-between gap-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-sageMatcha uppercase tracking-wider block">Operasional & Administrasi</span>
+            <h3 class="font-bold text-base text-charcoal leading-snug">Staf Administrasi & Komunikasi Pelanggan</h3>
+            <p class="text-xs text-mutedGray leading-relaxed">
+              Mengelola verifikasi pembayaran pesanan harian, pencatatan database mutasi transaksi, serta melayani pertanyaan konsumen dengan ketelitian dan responsivitas tinggi.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-roseBorder text-[11px] font-semibold text-mutedGray flex items-center justify-between">
+            <span>2022 &mdash; 2023</span>
+            <span class="text-sageMatcha font-bold">Manajemen Data</span>
+          </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="bg-white border border-roseBorder rounded-2xl p-6 shadow-soft flex flex-col justify-between gap-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-[#8668c2] uppercase tracking-wider block">Kompetisi & Belajar</span>
+            <h3 class="font-bold text-base text-charcoal leading-snug">Partisipan UI/UX Design Sprint & Hackathon</h3>
+            <p class="text-xs text-mutedGray leading-relaxed">
+              Berkolaborasi dalam tim lintas disiplin untuk merancang prototipe aplikasi mobile kesehatan mental ramah remaja dalam batas waktu 48 jam yang intensif.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-roseBorder text-[11px] font-semibold text-mutedGray flex items-center justify-between">
+            <span>2024</span>
+            <span class="text-[#8668c2] font-bold">Design Sprint</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- G. KONTAK & SOCIAL HUB -->
+    <section id="contact" class="pt-6">
+      <div class="bg-white border border-roseBorder rounded-3xl p-6 sm:p-10 shadow-soft-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Kolom Kiri: Let's Connect Card & Social Links (5 cols) -->
+          <div class="lg:col-span-5 flex flex-col justify-between gap-6">
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 text-dustyRose text-xs font-extrabold uppercase tracking-widest">
+                <span>✦ LET'S CONNECT</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-charcoal">Siap Memulai Proyek Bersama?</h2>
+              <p class="text-xs sm:text-sm text-mutedGray leading-relaxed">
+                Terbuka untuk tawaran magang korporat, bootcamp project, atau kolaborasi desain & web freelance. Jangan ragu menyapa melalui kanal favorit Anda!
+              </p>
+            </div>
+
+            <!-- Social Direct Hub Cards -->
+            <div class="space-y-2.5" id="contactSocialList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Form Pesan Cepat (7 cols) -->
+          <div class="lg:col-span-7 bg-warmBeige/50 border border-roseBorder rounded-2xl p-6 sm:p-8 flex flex-col gap-4">
+            <h3 class="font-bold text-base text-charcoal">Kirim Pesan Langsung</h3>
+            <p class="text-xs text-mutedGray">Pilih opsi pengiriman ke WhatsApp atau Email otomatis.</p>
+
+            <form id="quickContactForm" class="space-y-3.5">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Nama Lengkap</label>
+                <input type="text" id="senderName" required class="w-full text-xs sm:text-sm bg-white border border-roseBorder rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-dustyRose" placeholder="Nama Anda / HRD Tim">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Subjek / Keperluan</label>
+                <input type="text" id="senderSubject" required class="w-full text-xs sm:text-sm bg-white border border-roseBorder rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-dustyRose" placeholder="Tawaran Magang / Diskusi Proyek Web">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Pesan Singkat</label>
+                <textarea id="senderMessage" rows="3" required class="w-full text-xs sm:text-sm bg-white border border-roseBorder rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-dustyRose resize-none" placeholder="Tuliskan pesan Anda..."></textarea>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2 pt-2">
+                <button type="button" id="sendWaBtn" class="bg-sageMatcha hover:bg-[#8da88f] text-white text-xs font-bold px-5 py-3 rounded-full transition-all flex items-center gap-1.5 shadow-sm">
+                  <i class="ph-bold ph-whatsapp-logo text-sm"></i>
+                  <span>Kirim via WhatsApp</span>
+                </button>
+                <button type="button" id="sendMailBtn" class="bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-bold px-5 py-3 rounded-full transition-all flex items-center gap-1.5 shadow-sm">
+                  <i class="ph-bold ph-envelope text-sm"></i>
+                  <span>Kirim via Email</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER COPYRIGHT -->
+  <footer class="border-t border-roseBorder py-8 bg-white/60 text-center text-xs text-mutedGray">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p>&copy; 2026 Clara Studio &bull; Sistem Informasi. Dirancang dengan cinta & palet pastel.</p>
+      <div class="flex items-center gap-3" id="footerSocialRow">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DETAIL PROYEK (STUDI KASUS POP-UP) -->
+  <div id="projectDetailModal" class="fixed inset-0 z-50 hidden bg-charcoal/40 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white border border-roseBorder w-full max-w-2xl rounded-2xl p-6 sm:p-8 shadow-soft-lg my-8 relative flex flex-col gap-5 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-start border-b border-roseBorder pb-4">
+        <div>
+          <span id="modalProjCat" class="bg-softLavender text-[#7254a8] text-[11px] font-bold px-2.5 py-0.5 rounded-full inline-block mb-1.5">Kategori</span>
+          <h3 id="modalProjTitle" class="text-xl sm:text-2xl font-extrabold text-charcoal">Judul Proyek</h3>
+        </div>
+        <button id="closeDetailModalBtn" class="text-mutedGray hover:text-charcoal text-2xl font-bold leading-none p-1">&times;</button>
+      </div>
+
+      <!-- Thumbnail Preview -->
+      <div class="w-full h-56 sm:h-72 rounded-xl overflow-hidden bg-warmBeige">
+        <img id="modalProjImg" src="" alt="Thumbnail" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Tech Stack -->
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-mutedGray mb-1.5">Tools & Tech Stack Digunakan</label>
+        <div id="modalProjTags" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <!-- Studi Kasus Deskripsi -->
+      <div class="space-y-2">
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-mutedGray">Studi Kasus & Perjalanan Proyek</label>
+        <p id="modalProjCaseStudy" class="text-xs sm:text-sm text-charcoal leading-relaxed whitespace-pre-line bg-warmBeige/40 p-4 rounded-xl border border-roseBorder"></p>
+      </div>
+
+      <!-- Action Links Modal -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-roseBorder">
+        <div class="flex items-center gap-2" id="modalProjLinks">
+          <!-- Live & Repo buttons -->
+        </div>
+        <button id="closeDetailModalBtn2" class="text-xs font-semibold px-4 py-2 border border-roseBorder rounded-full hover:bg-warmBeige">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN CMS DRAWER / SLIDE-OVER MODAL DENGAN PIN LOCK -->
+  <div id="adminCmsModal" class="fixed inset-0 z-50 hidden bg-charcoal/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white border border-roseBorder w-full max-w-3xl rounded-3xl p-6 sm:p-8 shadow-soft-lg my-8 relative flex flex-col gap-6 max-h-[92vh] overflow-y-auto">
+      
+      <!-- CMS Header -->
+      <div class="flex justify-between items-center pb-4 border-b border-roseBorder">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-dustyRoseSoft text-dustyRose flex items-center justify-center text-lg">
+            <i class="ph-bold ph-sliders"></i>
+          </div>
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-charcoal">Admin CMS Panel</h3>
+            <p class="text-xs text-mutedGray">Kelola proyek portofolio, profil, dan link sosial media secara terintegrasi.</p>
+          </div>
+        </div>
+        <button id="closeCmsBtn" class="text-mutedGray hover:text-charcoal text-2xl font-bold leading-none">&times;</button>
+      </div>
+
+      <!-- PIN LOCK SCREEN -->
+      <div id="pinLockScreen" class="py-12 flex flex-col items-center justify-center gap-4 text-center">
+        <div class="w-12 h-12 rounded-full bg-warmBeige text-charcoal flex items-center justify-center text-2xl border border-roseBorder">
+          <i class="ph-bold ph-lock-key"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-base text-charcoal">Masukkan PIN Akses Admin</h4>
+          <p class="text-xs text-mutedGray mt-0.5">PIN Bawaan: <code class="bg-warmBeige px-2 py-0.5 rounded font-bold text-dustyRose">1234</code></p>
+        </div>
+        <form id="pinForm" class="flex flex-col items-center gap-3 w-full max-w-xs">
+          <input type="password" id="pinInput" maxlength="6" autofocus placeholder="••••" class="text-center tracking-widest text-lg font-extrabold w-36 border-2 border-roseBorder rounded-xl py-2 focus:outline-none focus:border-dustyRose">
+          <button type="submit" class="w-full bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-bold py-2.5 rounded-full transition-all shadow-sm">
+            Buka Panel Admin
+          </button>
+          <span id="pinErrorMsg" class="text-xs text-rose-500 font-semibold hidden">PIN salah, silakan coba lagi.</span>
+        </form>
+      </div>
+
+      <!-- CMS CONTENT TABS (Muncul setelah PIN benar) -->
+      <div id="cmsMainContent" class="hidden flex flex-col gap-6">
+        
+        <!-- Tab Navigation Switcher -->
+        <div class="flex items-center gap-2 border-b border-roseBorder pb-2">
+          <button id="tabProjectsBtn" class="cms-tab-btn active bg-charcoal text-white text-xs font-bold px-4 py-2 rounded-full transition-all">
+            Tab 1: Kelola Proyek Portofolio
+          </button>
+          <button id="tabProfileBtn" class="cms-tab-btn bg-white border border-roseBorder text-mutedGray hover:text-charcoal text-xs font-bold px-4 py-2 rounded-full transition-all">
+            Tab 2: Pengaturan Profil & Link Sosmed
+          </button>
+        </div>
+
+        <!-- ================= TAB 1: KELOLA PROYEK ================= -->
+        <div id="tab1Content" class="space-y-6">
+          <!-- Form Input Proyek -->
+          <form id="cmsProjectForm" class="bg-warmBeige/40 border border-roseBorder rounded-2xl p-5 space-y-4">
+            <input type="hidden" id="pEditIndex" value="-1">
+            <h4 id="pFormTitle" class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+              <i class="ph-bold ph-plus-circle text-dustyRose"></i>
+              <span>Tambah Proyek Baru</span>
+            </h4>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Judul Proyek</label>
+                <input type="text" id="pTitle" required class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="Contoh: Aplikasi POS Restoran">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Kategori</label>
+                <select id="pCategory" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose">
+                  <option value="UI/UX & Figma">UI/UX & Figma</option>
+                  <option value="Web & Coding">Web & Coding</option>
+                  <option value="Graphic & Apparel Design">Graphic & Apparel Design</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Gambar Thumbnail</label>
+                <input type="url" id="pImg" required class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://images.unsplash.com/...">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Tag Tools (Pisahkan Koma)</label>
+                <input type="text" id="pTags" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="Figma, Tailwind, JS, Java, R">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Link Demo / Live Web / Figma</label>
+                <input type="url" id="pLink" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://demo-app.com">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Link GitHub Repo</label>
+                <input type="url" id="pRepo" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://github.com/username/repo">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Deskripsi Singkat (Tampil di Kartu)</label>
+              <textarea id="pDesc" rows="2" required class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose resize-none" placeholder="Ringkasan 1-2 kalimat fungsi proyek..."></textarea>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Studi Kasus Lengkap (Tampil di Modal Detail)</label>
+              <textarea id="pCaseStudy" rows="4" required class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="Jelaskan latar belakang masalah, peran Anda, alur perancangan, tantangan teknis, dan hasil akhir proyek..."></textarea>
+            </div>
+
+            <div class="flex items-center gap-3 pt-1">
+              <button type="submit" id="pSubmitBtn" class="bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-bold px-6 py-2.5 rounded-full transition-all shadow-sm">
+                Simpan Proyek
+              </button>
+              <button type="button" id="pCancelBtn" class="hidden text-xs text-mutedGray hover:underline">
+                Batal Edit
+              </button>
+            </div>
+          </form>
+
+          <!-- List Proyek Aktif untuk Edit & Hapus -->
+          <div class="space-y-3">
+            <h4 class="font-bold text-xs uppercase tracking-wider text-mutedGray">Daftar Proyek Tampil</h4>
+            <div id="cmsProjectsList" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 2: PENGATURAN PROFIL & LINK SOSMED ================= -->
+        <div id="tab2Content" class="hidden space-y-5">
+          <form id="socialSettingsForm" class="bg-warmBeige/40 border border-roseBorder rounded-2xl p-5 space-y-4">
+            <h4 class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+              <i class="ph-bold ph-link text-dustyRose"></i>
+              <span>Perbarui Profil & Tautan Eksternal</span>
+            </h4>
+            <p class="text-xs text-mutedGray">Semua perubahan langsung memperbarui tombol di Hero, Navbar, dan Footer secara real-time.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Profil LinkedIn</label>
+                <input type="url" id="cfgLinkedin" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://linkedin.com/in/username">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Profil GitHub</label>
+                <input type="url" id="cfgGithub" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://github.com/username">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Instagram</label>
+                <input type="url" id="cfgInstagram" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://instagram.com/username">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL TikTok / Behance / Dribbble</label>
+                <input type="url" id="cfgOtherSocial" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://behance.net/username">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Alamat Email</label>
+                <input type="email" id="cfgEmail" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="clara.si@example.com">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Nomor WhatsApp (Format: 628xxx)</label>
+                <input type="text" id="cfgWhatsapp" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="6281234567890">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL File CV / Resume (Google Drive / PDF Link)</label>
+              <input type="url" id="cfgCvUrl" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://drive.google.com/file/d/...">
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-bold px-6 py-2.5 rounded-full transition-all shadow-sm">
+                Simpan Profil & Link
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ================= BACKUP & COPY CONFIG TOOLBAR ================= -->
+        <div class="pt-4 border-t border-roseBorder flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <button id="copyJsonBtn" class="bg-white border border-roseBorder hover:border-dustyRose text-charcoal text-xs font-semibold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-sm">
+              <i class="ph-bold ph-copy"></i>
+              <span>Salin Semua Data (Copy JSON Config)</span>
+            </button>
+            <button id="resetDefaultsBtn" class="text-xs text-rose-500 hover:underline font-medium">
+              Reset ke Default
+            </button>
+          </div>
+          <span class="text-[11px] text-mutedGray text-center sm:text-right">Tersimpan otomatis di browser LocalStorage.</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGIC (CRUD + STORAGE + FILTER + SOCIAL SYNC + DETAIL MODAL) -->
+  <script>
+    // 4 PROYEK CONTOH AWAL
+    const INITIAL_PROJECTS = [
+      {
+        title: "Sistem Kasir & Reservasi Cafe Pastel",
+        category: "Web & Coding",
+        img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80",
+        tags: ["Tailwind", "JavaScript", "LocalStorage"],
+        link: "https://demo-cafe-pos.example.com",
+        repo: "https://github.com/username/cafe-pos-system",
+        desc: "Aplikasi point-of-sale berbasis web dengan pencatatan meja real-time dan rekap penjualan otomatis.",
+        caseStudy: "Latar Belakang: Cafe artisan lokal membutuhkan pencatatan kasir yang cepat tanpa ketergantungan software berlangganan bulanan yang mahal.\n\nPeran & Solusi: Merancang arsitektur front-end dengan Tailwind CSS untuk antarmuka touch-screen ramah kasir, serta logika perhitungan diskon dan rekap kas otomatis menggunakan Vanilla JS.\n\nHasil: Mengurangi waktu antrean pemesanan hingga 35% pada jam sibuk."
+      },
+      {
+        title: "Redesain UI/UX Mobile Banking Syariah",
+        category: "UI/UX & Figma",
+        img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=700&q=80",
+        tags: ["Figma", "Design System", "Auto Layout"],
+        link: "https://figma.com/@clara/syariah-banking",
+        repo: "",
+        desc: "Penyederhanaan alur transfer dan zakat otomatis dengan micro-interaction dan komponen auto-layout modular.",
+        caseStudy: "Latar Belakang: Aplikasi perbankan seringkali memiliki navigasi bertingkat yang membingungkan pengguna baru, khususnya pada menu pembayaran sosial & zakat.\n\nPeran & Solusi: Melakukan user interview pada 10 responden, memetakan User Journey Map baru, lalu membangun 50+ token komponen Auto Layout di Figma dengan standar WCAG AA accessibility.\n\nHasil: Desain lolos usability test dengan Completion Rate mencapai 92%."
+      },
+      {
+        title: "Visual Branding & Apparel Kit 'Bloom Studio'",
+        category: "Graphic & Apparel Design",
+        img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=700&q=80",
+        tags: ["Illustrator", "Merchandise", "Apparel"],
+        link: "https://behance.net/gallery/bloom-studio",
+        repo: "",
+        desc: "Identitas visual lengkap untuk brand fashion lokal: tipografi sablon, hangtag, kemasan ramah lingkungan, dan lookbook.",
+        caseStudy: "Latar Belakang: Brand pakaian independen membutuhkan identitas visual yang mencerminkan keberlanjutan dan kehangatan personal anak muda.\n\nPeran & Solusi: Menyusun moodboard warna pastel earthy, menggambar aset tipografi sablon vektor di Illustrator, serta mendesain panduan lookbook untuk kampanye media sosial.\n\nHasil: Peluncuran 100 potong koleksi perdana terjual habis dalam waktu 2 minggu."
+      },
+      {
+        title: "Analisis Korelasi Kepuasan Pelanggan (R Studio)",
+        category: "Web & Coding",
+        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80",
+        tags: ["R", "Statistical Analysis", "Data Viz"],
+        link: "",
+        repo: "https://github.com/username/customer-satisfaction-r",
+        desc: "Pengolahan dataset survei e-commerce menggunakan model regresi linier berganda dan visualisasi ggplot2.",
+        caseStudy: "Latar Belakang: Menguji faktor-faktor operasional (kecepatan pengiriman, kejelasan deskripsi produk, respons customer service) terhadap Net Promoter Score (NPS).\n\nPeran & Solusi: Membersihkan data mentah 1.500 responden dengan dplyr di R, melakukan uji asumsi klasik, dan mengekstrak matriks korelasi visual.\n\nHasil: Ditemukan bahwa kecepatan respons customer service memiliki bobot korelasi tertinggi (r = 0.78) terhadap retensi pelanggan."
+      }
+    ];
+
+    // INITIAL PROFILE & SOCIAL LINKS
+    const INITIAL_PROFILE = {
+      linkedin: "https://linkedin.com/in/clara-sisteminformasi",
+      github: "https://github.com/clara-si",
+      instagram: "https://instagram.com/clara.studio",
+      otherSocial: "https://behance.net/clarasi",
+      email: "clara.si@example.com",
+      whatsapp: "6281234567890",
+      cvUrl: "https://example.com/cv-clara-sistem-informasi.pdf"
+    };
+
+    const STORAGE_KEY_PROJ = 'portfolio_clara_projects_v3';
+    const STORAGE_KEY_PROF = 'portfolio_clara_profile_v3';
+    const ADMIN_PIN = "1234";
+
+    let projects = [];
+    let profile = {};
+    let currentFilter = 'all';
+
+    // INISIALISASI DATA
+    function initData() {
+      // Load Projects
+      const savedProj = localStorage.getItem(STORAGE_KEY_PROJ);
+      if (savedProj) {
+        try { projects = JSON.parse(savedProj); } catch(e) { projects = [...INITIAL_PROJECTS]; }
+      } else {
+        projects = [...INITIAL_PROJECTS];
+        saveProjects();
+      }
+
+      // Load Profile
+      const savedProf = localStorage.getItem(STORAGE_KEY_PROF);
+      if (savedProf) {
+        try { profile = JSON.parse(savedProf); } catch(e) { profile = {...INITIAL_PROFILE}; }
+      } else {
+        profile = {...INITIAL_PROFILE};
+        saveProfile();
+      }
+
+      renderAll();
+    }
+
+    function saveProjects() {
+      localStorage.setItem(STORAGE_KEY_PROJ, JSON.stringify(projects));
+    }
+
+    function saveProfile() {
+      localStorage.setItem(STORAGE_KEY_PROF, JSON.stringify(profile));
+    }
+
+    function renderAll() {
+      renderProfileLinks();
+      renderProjectsGrid();
+      renderCmsProjectsList();
+      populateProfileForm();
+    }
+
+    // RENDER PROFIL & SOCIAL LINKS DI BERBAGAI BAGIAN
+    function renderProfileLinks() {
+      // 1. Nav CV button
+      const navCvBtn = document.getElementById('navCvBtn');
+      navCvBtn.href = profile.cvUrl || '#';
+
+      // 2. Hero Social Bar (Pill icon buttons)
+      const heroSocialBar = document.getElementById('heroSocialBar');
+      heroSocialBar.innerHTML = `
+        <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-roseBorder rounded-full text-xs font-semibold text-charcoal hover:border-dustyRose hover:text-dustyRose hover:shadow-sm transition-all">
+          <i class="ph-bold ph-linkedin-logo text-base"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="${profile.github}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-roseBorder rounded-full text-xs font-semibold text-charcoal hover:border-dustyRose hover:text-dustyRose hover:shadow-sm transition-all">
+          <i class="ph-bold ph-github-logo text-base"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="${profile.instagram}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-roseBorder rounded-full text-xs font-semibold text-charcoal hover:border-dustyRose hover:text-dustyRose hover:shadow-sm transition-all">
+          <i class="ph-bold ph-instagram-logo text-base"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="${profile.otherSocial}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-roseBorder rounded-full text-xs font-semibold text-charcoal hover:border-dustyRose hover:text-dustyRose hover:shadow-sm transition-all">
+          <i class="ph-bold ph-behance-logo text-base"></i>
+          <span>Portofolio Visual</span>
+        </a>
+        <a href="mailto:${profile.email}" class="flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-roseBorder rounded-full text-xs font-semibold text-charcoal hover:border-dustyRose hover:text-dustyRose hover:shadow-sm transition-all">
+          <i class="ph-bold ph-envelope text-base"></i>
+          <span>Email</span>
+        </a>
+      `;
+
+      // 3. Contact Social Hub Cards
+      const contactSocialList = document.getElementById('contactSocialList');
+      contactSocialList.innerHTML = `
+        <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-warmBeige/40 hover:bg-dustyRoseSoft/50 border border-roseBorder rounded-xl transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white border border-roseBorder flex items-center justify-center text-dustyRose text-lg"><i class="ph-bold ph-linkedin-logo"></i></span>
+            <div>
+              <span class="text-xs font-bold text-charcoal block">LinkedIn Profile</span>
+              <span class="text-[11px] text-mutedGray">Koneksi Profesional & Verifikasi Rekam Jejak</span>
+            </div>
+          </div>
+          <i class="ph-bold ph-arrow-up-right text-xs text-mutedGray group-hover:text-dustyRose"></i>
+        </a>
+        <a href="${profile.github}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-warmBeige/40 hover:bg-dustyRoseSoft/50 border border-roseBorder rounded-xl transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white border border-roseBorder flex items-center justify-center text-charcoal text-lg"><i class="ph-bold ph-github-logo"></i></span>
+            <div>
+              <span class="text-xs font-bold text-charcoal block">GitHub Repository</span>
+              <span class="text-[11px] text-mutedGray">Repositori Source Code & Proyek Terbuka</span>
+            </div>
+          </div>
+          <i class="ph-bold ph-arrow-up-right text-xs text-mutedGray group-hover:text-dustyRose"></i>
+        </a>
+        <a href="${profile.instagram}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-warmBeige/40 hover:bg-dustyRoseSoft/50 border border-roseBorder rounded-xl transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white border border-roseBorder flex items-center justify-center text-dustyRose text-lg"><i class="ph-bold ph-instagram-logo"></i></span>
+            <div>
+              <span class="text-xs font-bold text-charcoal block">Instagram Creative</span>
+              <span class="text-[11px] text-mutedGray">Karya Desain Apparel, Visual & Keseharian</span>
+            </div>
+          </div>
+          <i class="ph-bold ph-arrow-up-right text-xs text-mutedGray group-hover:text-dustyRose"></i>
+        </a>
+        <a href="https://wa.me/${profile.whatsapp}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-warmBeige/40 hover:bg-sageSoft border border-roseBorder rounded-xl transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white border border-roseBorder flex items-center justify-center text-sageMatcha text-lg"><i class="ph-bold ph-whatsapp-logo"></i></span>
+            <div>
+              <span class="text-xs font-bold text-charcoal block">WhatsApp Chat</span>
+              <span class="text-[11px] text-mutedGray">+${profile.whatsapp} &bull; Respon Cepat</span>
+            </div>
+          </div>
+          <i class="ph-bold ph-arrow-up-right text-xs text-mutedGray group-hover:text-sageMatcha"></i>
+        </a>
+      `;
+
+      // 4. Footer Social Links
+      const footerSocialRow = document.getElementById('footerSocialRow');
+      footerSocialRow.innerHTML = `
+        <a href="${profile.linkedin}" target="_blank" class="hover:text-dustyRose">LinkedIn</a> &bull;
+        <a href="${profile.github}" target="_blank" class="hover:text-dustyRose">GitHub</a> &bull;
+        <a href="${profile.instagram}" target="_blank" class="hover:text-dustyRose">Instagram</a> &bull;
+        <a href="${profile.otherSocial}" target="_blank" class="hover:text-dustyRose">Karya Visual</a>
+      `;
+    }
+
+    // RENDER GRID PORTOFOLIO UTAMA
+    function renderProjectsGrid() {
+      const grid = document.getElementById('projectsGrid');
+      const emptyState = document.getElementById('emptyProjectsState');
+      grid.innerHTML = '';
+
+      const filtered = currentFilter === 'all'
+        ? projects
+        : projects.filter(p => p.category === currentFilter);
+
+      if (filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      filtered.forEach((p) => {
+        const rawIndex = projects.indexOf(p);
+        const card = document.createElement('article');
+        card.className = "bg-white border border-roseBorder rounded-2xl overflow-hidden shadow-soft hover:shadow-soft-lg transition-all flex flex-col group";
+
+        // Tags
+        const tagsHtml = (p.tags || []).map(t => 
+          `<span class="bg-warmBeige text-charcoal text-[10px] font-semibold px-2 py-0.5 rounded-md border border-roseBorder">${t.trim()}</span>`
+        ).join('');
+
+        // Action links
+        let liveLinkBtn = p.link 
+          ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-xs font-bold text-dustyRose hover:text-dustyRoseDark flex items-center gap-1">Live Demo <i class="ph-bold ph-arrow-up-right"></i></a>`
+          : '';
+
+        let repoLinkBtn = p.repo
+          ? `<a href="${p.repo}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" title="GitHub Repository" class="w-7 h-7 rounded-full bg-warmBeige hover:bg-white border border-roseBorder flex items-center justify-center text-charcoal hover:text-dustyRose transition-colors"><i class="ph-bold ph-github-logo text-sm"></i></a>`
+          : '';
+
+        card.innerHTML = `
+          <!-- Thumbnail + Category Badge -->
+          <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-warmBeige cursor-pointer" onclick="openDetailModal(${rawIndex})">
+            <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80'">
+            <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-[11px] font-bold px-3 py-1 rounded-full text-charcoal border border-roseBorder shadow-sm">
+              ${p.category}
+            </span>
+          </div>
+
+          <!-- Content Body -->
+          <div class="p-5 flex-1 flex flex-col justify-between gap-4 cursor-pointer" onclick="openDetailModal(${rawIndex})">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2.5">
+                ${tagsHtml}
+              </div>
+              <h3 class="font-bold text-base text-charcoal leading-snug group-hover:text-dustyRose transition-colors">
+                ${p.title}
+              </h3>
+              <p class="text-xs text-mutedGray leading-relaxed mt-1.5 line-clamp-2">
+                ${p.desc}
+              </p>
+            </div>
+
+            <!-- Card Bottom Actions -->
+            <div class="pt-3 border-t border-roseBorder flex items-center justify-between">
+              <button type="button" class="text-xs font-bold text-charcoal hover:text-dustyRose flex items-center gap-1">
+                <span>Studi Kasus</span>
+                <i class="ph-bold ph-caret-right"></i>
+              </button>
+
+              <div class="flex items-center gap-2">
+                ${liveLinkBtn}
+                ${repoLinkBtn}
+              </div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // FILTER TAB LOGIC
+    document.getElementById('filterContainer').addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.className = "filter-btn bg-white border border-roseBorder text-mutedGray hover:text-charcoal text-xs font-bold px-4 py-2 rounded-full transition-all";
+      });
+      btn.className = "filter-btn active bg-charcoal text-white text-xs font-bold px-4 py-2 rounded-full transition-all";
+      currentFilter = btn.dataset.cat;
+      renderProjectsGrid();
+    });
+
+    // MODAL DETAIL PROYEK (STUDI KASUS POP-UP)
+    const detailModal = document.getElementById('projectDetailModal');
+
+    window.openDetailModal = function(index) {
+      const p = projects[index];
+      if (!p) return;
+
+      document.getElementById('modalProjCat').textContent = p.category;
+      document.getElementById('modalProjTitle').textContent = p.title;
+      document.getElementById('modalProjImg').src = p.img;
+      document.getElementById('modalProjCaseStudy').textContent = p.caseStudy || p.desc;
+
+      const tagsContainer = document.getElementById('modalProjTags');
+      tagsContainer.innerHTML = (p.tags || []).map(t => 
+        `<span class="bg-warmBeige text-charcoal text-xs font-semibold px-2.5 py-1 rounded-md border border-roseBorder">${t.trim()}</span>`
+      ).join('');
+
+      const linksContainer = document.getElementById('modalProjLinks');
+      linksContainer.innerHTML = '';
+      if (p.link) {
+        linksContainer.innerHTML += `
+          <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-bold px-4 py-2 rounded-full transition-all flex items-center gap-1.5">
+            <i class="ph-bold ph-arrow-up-right"></i>
+            <span>Buka Live Demo / Figma</span>
+          </a>
+        `;
+      }
+      if (p.repo) {
+        linksContainer.innerHTML += `
+          <a href="${p.repo}" target="_blank" rel="noopener noreferrer" class="bg-charcoal hover:bg-black text-white text-xs font-bold px-4 py-2 rounded-full transition-all flex items-center gap-1.5">
+            <i class="ph-bold ph-github-logo"></i>
+            <span>GitHub Repository</span>
+          </a>
+        `;
+      }
+
+      detailModal.classList.remove('hidden');
+    };
+
+    document.getElementById('closeDetailModalBtn').addEventListener('click', () => detailModal.classList.add('hidden'));
+    document.getElementById('closeDetailModalBtn2').addEventListener('click', () => detailModal.classList.add('hidden'));
+
+    // QUICK CONTACT FORM HANDLER (WA & EMAIL)
+    document.getElementById('sendWaBtn').addEventListener('click', () => {
+      const name = document.getElementById('senderName').value.trim();
+      const subject = document.getElementById('senderSubject').value.trim();
+      const message = document.getElementById('senderMessage').value.trim();
+      if (!name || !message) {
+        alert("Mohon isi nama dan pesan Anda terlebih dahulu.");
+        return;
+      }
+      const text = `Halo Clara, saya *${name}*.\nSubjek: *${subject || 'Diskusi Proyek'}*\n\nPesan:\n${message}`;
+      window.open(`https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
+    });
+
+    document.getElementById('sendMailBtn').addEventListener('click', () => {
+      const name = document.getElementById('senderName').value.trim();
+      const subject = document.getElementById('senderSubject').value.trim();
+      const message = document.getElementById('senderMessage').value.trim();
+      if (!name || !message) {
+        alert("Mohon isi nama dan pesan Anda terlebih dahulu.");
+        return;
+      }
+      const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(subject || 'Pesan Portofolio dari ' + name)}&body=${encodeURIComponent('Nama: ' + name + '\n\nPesan:\n' + message)}`;
+      window.location.href = mailto;
+    });
+
+    // ADMIN CMS MODAL & PIN LOCK LOGIC
+    const adminModal = document.getElementById('adminCmsModal');
+    const pinLockScreen = document.getElementById('pinLockScreen');
+    const cmsMainContent = document.getElementById('cmsMainContent');
+    const pinForm = document.getElementById('pinForm');
+    const pinInput = document.getElementById('pinInput');
+    const pinErrorMsg = document.getElementById('pinErrorMsg');
+
+    document.getElementById('openCmsTrigger').addEventListener('click', () => {
+      adminModal.classList.remove('hidden');
+      pinInput.value = '';
+      pinErrorMsg.classList.add('hidden');
+    });
+
+    document.getElementById('closeCmsBtn').addEventListener('click', () => {
+      adminModal.classList.add('hidden');
+    });
+
+    pinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (pinInput.value === ADMIN_PIN) {
+        pinLockScreen.classList.add('hidden');
+        cmsMainContent.classList.remove('hidden');
+      } else {
+        pinErrorMsg.classList.remove('hidden');
+      }
+    });
+
+    // CMS TAB SWITCHER
+    const tabProjectsBtn = document.getElementById('tabProjectsBtn');
+    const tabProfileBtn = document.getElementById('tabProfileBtn');
+    const tab1Content = document.getElementById('tab1Content');
+    const tab2Content = document.getElementById('tab2Content');
+
+    tabProjectsBtn.addEventListener('click', () => {
+      tabProjectsBtn.className = "cms-tab-btn active bg-charcoal text-white text-xs font-bold px-4 py-2 rounded-full transition-all";
+      tabProfileBtn.className = "cms-tab-btn bg-white border border-roseBorder text-mutedGray hover:text-charcoal text-xs font-bold px-4 py-2 rounded-full transition-all";
+      tab1Content.classList.remove('hidden');
+      tab2Content.classList.add('hidden');
+    });
+
+    tabProfileBtn.addEventListener('click', () => {
+      tabProfileBtn.className = "cms-tab-btn active bg-charcoal text-white text-xs font-bold px-4 py-2 rounded-full transition-all";
+      tabProjectsBtn.className = "cms-tab-btn bg-white border border-roseBorder text-mutedGray hover:text-charcoal text-xs font-bold px-4 py-2 rounded-full transition-all";
+      tab2Content.classList.remove('hidden');
+      tab1Content.classList.add('hidden');
+    });
+
+    // CRUD PROYEK FORM
+    const cmsProjectForm = document.getElementById('cmsProjectForm');
+    const pEditIndex = document.getElementById('pEditIndex');
+    const pFormTitle = document.getElementById('pFormTitle');
+    const pCancelBtn = document.getElementById('pCancelBtn');
+
+    cmsProjectForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const idx = parseInt(pEditIndex.value, 10);
+      const newP = {
+        title: document.getElementById('pTitle').value.trim(),
+        category: document.getElementById('pCategory').value,
+        img: document.getElementById('pImg').value.trim(),
+        tags: document.getElementById('pTags').value.split(',').map(s => s.trim()).filter(Boolean),
+        link: document.getElementById('pLink').value.trim(),
+        repo: document.getElementById('pRepo').value.trim(),
+        desc: document.getElementById('pDesc').value.trim(),
+        caseStudy: document.getElementById('pCaseStudy').value.trim(),
+      };
+
+      if (idx >= 0 && idx < projects.length) {
+        projects[idx] = newP;
+      } else {
+        projects.unshift(newP);
+      }
+
+      saveProjects();
+      renderProjectsGrid();
+      renderCmsProjectsList();
+      resetProjectForm();
+    });
+
+    function resetProjectForm() {
+      cmsProjectForm.reset();
+      pEditIndex.value = '-1';
+      pFormTitle.innerHTML = `<i class="ph-bold ph-plus-circle text-dustyRose"></i><span>Tambah Proyek Baru</span>`;
+      pCancelBtn.classList.add('hidden');
+    }
+
+    pCancelBtn.addEventListener('click', resetProjectForm);
+
+    function renderCmsProjectsList() {
+      const listContainer = document.getElementById('cmsProjectsList');
+      listContainer.innerHTML = '';
+      projects.forEach((p, idx) => {
+        const item = document.createElement('div');
+        item.className = "flex items-center justify-between p-2.5 bg-white border border-roseBorder rounded-xl text-xs";
+        item.innerHTML = `
+          <div class="flex items-center gap-2.5 truncate">
+            <span class="w-2 h-2 rounded-full bg-dustyRose"></span>
+            <span class="font-bold text-charcoal truncate max-w-[200px] sm:max-w-xs">${p.title}</span>
+            <span class="text-[10px] text-mutedGray bg-warmBeige px-2 py-0.5 rounded">${p.category}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="editProjectFromCms(${idx})" class="text-charcoal hover:text-dustyRose font-bold text-xs">Edit</button>
+            <span class="text-roseBorder">|</span>
+            <button onclick="deleteProjectFromCms(${idx})" class="text-rose-500 hover:underline font-bold text-xs">Hapus</button>
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+    }
+
+    window.editProjectFromCms = function(idx) {
+      const p = projects[idx];
+      if (!p) return;
+      pEditIndex.value = idx;
+      document.getElementById('pTitle').value = p.title;
+      document.getElementById('pCategory').value = p.category;
+      document.getElementById('pImg').value = p.img;
+      document.getElementById('pTags').value = (p.tags || []).join(', ');
+      document.getElementById('pLink').value = p.link || '';
+      document.getElementById('pRepo').value = p.repo || '';
+      document.getElementById('pDesc').value = p.desc;
+      document.getElementById('pCaseStudy').value = p.caseStudy || p.desc;
+
+      pFormTitle.innerHTML = `<i class="ph-bold ph-pencil-simple text-dustyRose"></i><span>Edit Proyek: ${p.title}</span>`;
+      pCancelBtn.classList.remove('hidden');
+      cmsProjectForm.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    window.deleteProjectFromCms = function(idx) {
+      if (confirm(`Hapus proyek "${projects[idx].title}"?`)) {
+        projects.splice(idx, 1);
+        saveProjects();
+        renderProjectsGrid();
+        renderCmsProjectsList();
+      }
+    };
+
+    // FORM PENGATURAN PROFIL & LINK SOSMED
+    function populateProfileForm() {
+      document.getElementById('cfgLinkedin').value = profile.linkedin || '';
+      document.getElementById('cfgGithub').value = profile.github || '';
+      document.getElementById('cfgInstagram').value = profile.instagram || '';
+      document.getElementById('cfgOtherSocial').value = profile.otherSocial || '';
+      document.getElementById('cfgEmail').value = profile.email || '';
+      document.getElementById('cfgWhatsapp').value = profile.whatsapp || '';
+      document.getElementById('cfgCvUrl').value = profile.cvUrl || '';
+    }
+
+    document.getElementById('socialSettingsForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      profile = {
+        linkedin: document.getElementById('cfgLinkedin').value.trim(),
+        github: document.getElementById('cfgGithub').value.trim(),
+        instagram: document.getElementById('cfgInstagram').value.trim(),
+        otherSocial: document.getElementById('cfgOtherSocial').value.trim(),
+        email: document.getElementById('cfgEmail').value.trim(),
+        whatsapp: document.getElementById('cfgWhatsapp').value.trim(),
+        cvUrl: document.getElementById('cfgCvUrl').value.trim(),
+      };
+      saveProfile();
+      renderProfileLinks();
+      alert("Profil dan Tautan Sosial Media berhasil diperbarui di seluruh halaman!");
+    });
+
+    // COPY CONFIG TOOLBAR & RESET
+    document.getElementById('copyJsonBtn').addEventListener('click', () => {
+      const fullConfig = {
+        profile: profile,
+        projects: projects
+      };
+      const jsonString = JSON.stringify(fullConfig, null, 2);
+      navigator.clipboard.writeText(jsonString).then(() => {
+        alert("Konfigurasi JSON lengkap berhasil disalin ke clipboard! Siap di-paste ke script untuk GitHub Pages.");
+      }).catch(() => {
+        prompt("Salin manual data JSON ini:", jsonString);
+      });
+    });
+
+    document.getElementById('resetDefaultsBtn').addEventListener('click', () => {
+      if (confirm("Reset semua proyek dan pengaturan kembali ke data contoh bawaan?")) {
+        projects = [...INITIAL_PROJECTS];
+        profile = {...INITIAL_PROFILE};
+        saveProjects();
+        saveProfile();
+        renderAll();
+        alert("Data telah di-reset ke pengaturan bawaan.");
+      }
+    });
+
+    // Jalankan inisialisasi awal
+    initData();
+  </script>
+</body>
+</html>
