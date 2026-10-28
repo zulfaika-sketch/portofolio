@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio Pribadi & Studio - Sistem Informasi</title>
 
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zulfaika-sketch.github.io/portofolio/">
+  <meta property="og:title" content="Portofolio Pribadi & Studio - Sistem Informasi">
+  <meta property="og:description" content="Mahasiswi Sistem Informasi yang memadukan koding web, UI/UX design, dan strategi bisnis.">
+  <meta property="og:image" content="https://zulfaika-sketch.github.io/portofolio/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,8 +94,8 @@
           <span>Download CV</span>
         </a>
 
-        <!-- Tombol Gembok Admin CMS -->
-        <button id="openCmsTrigger" title="Admin CMS Panel" class="w-8 h-8 rounded-full border border-roseBorder bg-warmBeige hover:bg-dustyRoseSoft text-charcoal hover:text-dustyRose flex items-center justify-center text-base transition-colors">
+        <!-- Tombol Gembok Admin CMS (Tersembunyi secara default untuk umum) -->
+        <button id="openCmsTrigger" title="Admin CMS Panel" class="hidden w-8 h-8 rounded-full border border-roseBorder bg-warmBeige hover:bg-dustyRoseSoft text-charcoal hover:text-dustyRose flex items-center justify-center text-base transition-colors">
           <i class="ph-bold ph-lock-key"></i>
         </button>
       </div>
@@ -520,15 +528,15 @@
           <i class="ph-bold ph-lock-key"></i>
         </div>
         <div>
-          <h4 class="font-bold text-base text-charcoal">Masukkan PIN Akses Admin</h4>
-          <p class="text-xs text-mutedGray mt-0.5">PIN Bawaan: <code class="bg-warmBeige px-2 py-0.5 rounded font-bold text-dustyRose">1234</code></p>
+          <h4 class="font-bold text-base text-charcoal">Akses Khusus Pemilik</h4>
+          <p class="text-xs text-mutedGray mt-0.5">Masukkan password admin untuk mengelola portofolio.</p>
         </div>
         <form id="pinForm" class="flex flex-col items-center gap-3 w-full max-w-xs">
-          <input type="password" id="pinInput" maxlength="6" autofocus placeholder="••••" class="text-center tracking-widest text-lg font-extrabold w-36 border-2 border-roseBorder rounded-xl py-2 focus:outline-none focus:border-dustyRose">
+          <input type="password" id="pinInput" autofocus placeholder="Password rahasia" class="text-center tracking-wider text-sm font-semibold w-52 border-2 border-roseBorder rounded-xl py-2 px-3 focus:outline-none focus:border-dustyRose">
           <button type="submit" class="w-full bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-bold py-2.5 rounded-full transition-all shadow-sm">
             Buka Panel Admin
           </button>
-          <span id="pinErrorMsg" class="text-xs text-rose-500 font-semibold hidden">PIN salah, silakan coba lagi.</span>
+          <span id="pinErrorMsg" class="text-xs text-rose-500 font-semibold hidden">Password salah.</span>
         </form>
       </div>
 
@@ -668,6 +676,18 @@
               <input type="url" id="cfgCvUrl" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://drive.google.com/file/d/...">
             </div>
 
+            <!-- Ganti Password Admin Khusus Pemilik -->
+            <div class="pt-3 border-t border-roseBorder">
+              <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Ganti Password Admin</label>
+              <div class="flex items-center gap-2">
+                <input type="password" id="cfgNewPassword" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="Ketik password baru (min 4 karakter)">
+                <button type="button" id="btnChangePassword" class="bg-charcoal hover:bg-black text-white text-xs font-bold px-4 py-2 rounded-xl whitespace-nowrap transition-all shadow-sm">
+                  Simpan Password
+                </button>
+              </div>
+              <p class="text-[10px] text-mutedGray mt-1">Password disimpan dengan enkripsi SHA-256 di browser Anda.</p>
+            </div>
+
             <div class="pt-2">
               <button type="submit" class="bg-dustyRose hover:bg-dustyRoseDark text-white text-xs font-bold px-6 py-2.5 rounded-full transition-all shadow-sm">
                 Simpan Profil & Link
@@ -753,7 +773,18 @@
 
     const STORAGE_KEY_PROJ = 'portfolio_clara_projects_v3';
     const STORAGE_KEY_PROF = 'portfolio_clara_profile_v3';
-    const ADMIN_PIN = "1234";
+    const STORAGE_KEY_PIN_HASH = 'portfolio_clara_pin_hash_v3';
+    // SHA-256 default hash (fallback) untuk "1234"
+    const DEFAULT_PIN_HASH = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
+
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function getAdminHash() {
+      return localStorage.getItem(STORAGE_KEY_PIN_HASH) || DEFAULT_PIN_HASH;
+    }
 
     let projects = [];
     let profile = {};
@@ -1046,19 +1077,41 @@
     const pinInput = document.getElementById('pinInput');
     const pinErrorMsg = document.getElementById('pinErrorMsg');
 
-    document.getElementById('openCmsTrigger').addEventListener('click', () => {
+    function openAdminModal() {
       adminModal.classList.remove('hidden');
       pinInput.value = '';
       pinErrorMsg.classList.add('hidden');
+      pinInput.focus();
+    }
+
+    document.getElementById('openCmsTrigger').addEventListener('click', openAdminModal);
+
+    // Buka otomatis / tampilkan tombol jika ada ?admin di URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('admin') || (urlParams.has('mode') && urlParams.get('mode') === 'admin')) {
+      const trigger = document.getElementById('openCmsTrigger');
+      if (trigger) trigger.classList.remove('hidden');
+      openAdminModal();
+    }
+
+    // Shortcut keyboard rahasia: Ctrl + Shift + A (atau Cmd + Shift + A)
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        const trigger = document.getElementById('openCmsTrigger');
+        if (trigger) trigger.classList.remove('hidden');
+        openAdminModal();
+      }
     });
 
     document.getElementById('closeCmsBtn').addEventListener('click', () => {
       adminModal.classList.add('hidden');
     });
 
-    pinForm.addEventListener('submit', (e) => {
+    pinForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (pinInput.value === ADMIN_PIN) {
+      const enteredHash = await sha256(pinInput.value);
+      if (enteredHash === getAdminHash()) {
         pinLockScreen.classList.add('hidden');
         cmsMainContent.classList.remove('hidden');
       } else {
@@ -1201,6 +1254,19 @@
       saveProfile();
       renderProfileLinks();
       alert("Profil dan Tautan Sosial Media berhasil diperbarui di seluruh halaman!");
+    });
+
+    // Handler Ganti Password Admin
+    document.getElementById('btnChangePassword').addEventListener('click', async () => {
+      const newPass = document.getElementById('cfgNewPassword').value.trim();
+      if (!newPass || newPass.length < 4) {
+        alert("Password minimal 4 karakter.");
+        return;
+      }
+      const newHash = await sha256(newPass);
+      localStorage.setItem(STORAGE_KEY_PIN_HASH, newHash);
+      document.getElementById('cfgNewPassword').value = '';
+      alert("Password Admin berhasil diganti! Gunakan password baru ini untuk masuk berikutnya.");
     });
 
     // COPY CONFIG TOOLBAR & RESET
