@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio Pribadi & Studio - Sistem Informasi</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23FCECEF'/%3E%3Ctext y='.82em' x='50%25' text-anchor='middle' font-size='60' fill='%23E58C9A'%3E✦%3C/text%3E%3C/svg%3E">
 
   <!-- Open Graph / Social Media Preview -->
   <meta property="og:type" content="website">
@@ -149,7 +150,7 @@
         
         <!-- Main Image Circle -->
         <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-2 bg-white border-2 border-roseBorder shadow-soft-lg">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Clara Profile" class="w-full h-full object-cover rounded-full">
+          <img id="heroProfileImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Clara Profile" class="w-full h-full object-cover rounded-full">
         </div>
 
         <!-- Floating Badge 1: UI/UX Figma -->
@@ -581,7 +582,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Gambar Thumbnail</label>
-                <input type="url" id="pImg" required class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://images.unsplash.com/...">
+                <input type="text" id="pImg" required class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://images.unsplash.com/... atau nama-file.jpg">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Tag Tools (Pisahkan Koma)</label>
@@ -592,11 +593,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Link Demo / Live Web / Figma</label>
-                <input type="url" id="pLink" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://demo-app.com">
+                <input type="text" id="pLink" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://demo-app.com atau demo-restohub.html">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Link GitHub Repo</label>
-                <input type="url" id="pRepo" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://github.com/username/repo">
+                <input type="text" id="pRepo" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white focus:outline-none focus:border-dustyRose" placeholder="https://github.com/username/repo">
               </div>
             </div>
 
@@ -638,32 +639,38 @@
             </h4>
             <p class="text-xs text-mutedGray">Semua perubahan langsung memperbarui tombol di Hero, Navbar, dan Footer secara real-time.</p>
 
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Foto Profil (URL Link atau Nama File Lokal)</label>
+              <input type="text" id="cfgAvatarUrl" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://... atau nama-file-foto.jpg">
+              <span class="text-[10px] text-mutedGray mt-0.5 block">Bisa pakai link foto online (Google Drive / GitHub) atau taruh file foto di folder `E:\portofolio` lalu ketik nama filenya.</span>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Profil LinkedIn</label>
-                <input type="url" id="cfgLinkedin" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://linkedin.com/in/username">
+                <input type="text" id="cfgLinkedin" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://linkedin.com/in/username">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Profil GitHub</label>
-                <input type="url" id="cfgGithub" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://github.com/username">
+                <input type="text" id="cfgGithub" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://github.com/username">
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL Instagram</label>
-                <input type="url" id="cfgInstagram" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://instagram.com/username">
+                <input type="text" id="cfgInstagram" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://instagram.com/username">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL TikTok / Behance / Dribbble</label>
-                <input type="url" id="cfgOtherSocial" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://behance.net/username">
+                <input type="text" id="cfgOtherSocial" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://behance.net/username">
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Alamat Email</label>
-                <input type="email" id="cfgEmail" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="clara.si@example.com">
+                <input type="text" id="cfgEmail" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="clara.si@example.com">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">Nomor WhatsApp (Format: 628xxx)</label>
@@ -673,7 +680,7 @@
 
             <div>
               <label class="block text-[11px] font-bold uppercase text-mutedGray mb-1">URL File CV / Resume (Google Drive / PDF Link)</label>
-              <input type="url" id="cfgCvUrl" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://drive.google.com/file/d/...">
+              <input type="text" id="cfgCvUrl" class="w-full text-xs border border-roseBorder rounded-xl px-3 py-2 bg-white" placeholder="https://drive.google.com/file/d/...">
             </div>
 
             <!-- Ganti Password Admin Khusus Pemilik -->
@@ -698,11 +705,16 @@
 
         <!-- ================= BACKUP & COPY CONFIG TOOLBAR ================= -->
         <div class="pt-4 border-t border-roseBorder flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2">
             <button id="copyJsonBtn" class="bg-white border border-roseBorder hover:border-dustyRose text-charcoal text-xs font-semibold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-sm">
               <i class="ph-bold ph-copy"></i>
-              <span>Salin Semua Data (Copy JSON Config)</span>
+              <span>Salin Data (Copy JSON)</span>
             </button>
+            <label class="bg-white border border-roseBorder hover:border-dustyRose text-charcoal text-xs font-semibold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+              <i class="ph-bold ph-upload-simple"></i>
+              <span>Import JSON</span>
+              <input type="file" id="importJsonInput" accept=".json" class="hidden">
+            </label>
             <button id="resetDefaultsBtn" class="text-xs text-rose-500 hover:underline font-medium">
               Reset ke Default
             </button>
@@ -719,24 +731,24 @@
     // 4 PROYEK CONTOH AWAL
     const INITIAL_PROJECTS = [
       {
-        title: "Sistem Kasir & Reservasi Cafe Pastel",
+        title: "RestoHub — Sistem Kasir & Manajemen Meja Restoran",
         category: "Web & Coding",
         img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80",
-        tags: ["Tailwind", "JavaScript", "LocalStorage"],
-        link: "https://demo-cafe-pos.example.com",
-        repo: "https://github.com/username/cafe-pos-system",
-        desc: "Aplikasi point-of-sale berbasis web dengan pencatatan meja real-time dan rekap penjualan otomatis.",
-        caseStudy: "Latar Belakang: Cafe artisan lokal membutuhkan pencatatan kasir yang cepat tanpa ketergantungan software berlangganan bulanan yang mahal.\n\nPeran & Solusi: Merancang arsitektur front-end dengan Tailwind CSS untuk antarmuka touch-screen ramah kasir, serta logika perhitungan diskon dan rekap kas otomatis menggunakan Vanilla JS.\n\nHasil: Mengurangi waktu antrean pemesanan hingga 35% pada jam sibuk."
+        tags: ["HTML5", "Tailwind CSS", "JavaScript", "LocalStorage", "ERD", "POS"],
+        link: "demo-restohub.html",
+        repo: "https://github.com/zulfaika-sketch/restohub-pos",
+        desc: "Sistem POS dan billing restoran responsif dengan kalkulasi diskon otomatis, pajak PB1 10%, cetak struk thermal, dan rekap pendapatan harian.",
+        caseStudy: "1. RINGKASAN EKSEKUTIF (PROJECT OVERVIEW)\n• Peran: UI/UX Designer & Frontend Developer (Mahasiswi Sistem Informasi)\n• Metode: Agile / SDLC Terstruktur (Requirements Gathering, Flowchart & ERD, Wireframing, Implementation)\n• Tech Stack: HTML5, Tailwind CSS, JavaScript Vanilla, LocalStorage\n• Tujuan: Mengatasi antrean kasir manual, meminimalkan selisih pencatatan nota fisik, serta mengotomatisasi perhitungan diskon dan pajak PB1 secara transparan.\n\n2. IDENTIFIKASI MASALAH (PROBLEM STATEMENT)\n• Human Error: Kesalahan hitung manual promo bertingkat dan pajak daerah PB1 (10%).\n• Pencatatan Ganda: Kasir menulis nota kertas sebelum menginput ulang ke rekap penjualan di akhir hari.\n• Visibilitas Pesanan: Antrean lama karena keterlambatan penerusan pesanan ke bagian dapur.\n\n3. ANALISIS KEBUTUHAN & PEMODELAN SISTEM\n• Kebutuhan Fungsional:\n  - Katalog Produk: Filter kategori (Makanan, Minuman, Dessert) dan status ketersediaan stok.\n  - Manajemen Meja: Pemilihan nomor meja (Dine-in / Take-away) terintegrasi ke billing.\n  - Kalkulasi Otomatis: Subtotal, diskon bertingkat (persentase & nominal voucher), dan pajak PB1 10%.\n  - Cetak Struk: Format thermal receipt 58mm/80mm siap cetak dengan timestamp transaksi.\n  - Ringkasan Harian: Log riwayat transaksi dan total pendapatan per hari via LocalStorage.\n• Entity-Relationship Diagram (ERD):\n  - User (User_ID, Name, Role)\n  - Category (Category_ID, Category_Name)\n  - Product (Product_ID, Name, Price, Category_ID, Stock)\n  - Transaction (Transaction_ID, Date_Time, Table_No, Subtotal, Discount, Tax, Grand_Total, Payment_Method)\n  - Transaction_Item (Item_ID, Transaction_ID, Product_ID, Quantity, Subtotal_Item)\n\n4. PERANCANGAN ANTARMUKA (UI/UX DESIGN) & FITUR KUNCI\n• Desain Visual: Clean modern bernuansa pastel hangat, responsif di desktop kasir maupun tablet pelayan.\n• Navigasi Cepat: 3 view modular (Point of Sale, Riwayat Transaksi, Kelola Menu CRUD).\n• Panel Billing: Kalkulator diskon dinamis, kalkulator uang pas / kembalian, pilihan pembayaran (Tunai & QRIS Instant).\n\n5. DAMPAK & HASIL EVALUASI (IMPACT)\n• Efisiensi Operasional: Waktu pemrosesan transaksi berkurang hingga 60% dibanding nota manual.\n• Akurasi Data: Mereduksi risiko selisih perhitungan pajak dan rekap kas harian hingga 0%.\n• Fleksibilitas Teknis: Struktur kode modular siap diintegrasikan dengan backend database relasional (MySQL / RESTful API)."
       },
       {
-        title: "Redesain UI/UX Mobile Banking Syariah",
+        title: "Amanah Mobile — Redesain UI/UX Mobile Banking Syariah",
         category: "UI/UX & Figma",
         img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=700&q=80",
-        tags: ["Figma", "Design System", "Auto Layout"],
-        link: "https://figma.com/@clara/syariah-banking",
-        repo: "",
-        desc: "Penyederhanaan alur transfer dan zakat otomatis dengan micro-interaction dan komponen auto-layout modular.",
-        caseStudy: "Latar Belakang: Aplikasi perbankan seringkali memiliki navigasi bertingkat yang membingungkan pengguna baru, khususnya pada menu pembayaran sosial & zakat.\n\nPeran & Solusi: Melakukan user interview pada 10 responden, memetakan User Journey Map baru, lalu membangun 50+ token komponen Auto Layout di Figma dengan standar WCAG AA accessibility.\n\nHasil: Desain lolos usability test dengan Completion Rate mencapai 92%."
+        tags: ["Figma", "UI/UX Research", "Design System", "Usability Testing", "Maze"],
+        link: "demo-amanah-mobile.html",
+        repo: "https://github.com/zulfaika-sketch/amanah-mobile-uiux",
+        desc: "Redesain antarmuka perbankan syariah: one-step transfer setup, transparansi mutasi bagi hasil (nisbah), dan integrasi ekosistem Islami (ZISWAF).",
+        caseStudy: "1. RINGKASAN & METADATA PROYEK\n• Peran: End-to-End Product / UI/UX Designer (User Research, Wireframing, Visual Design, Usability Testing)\n• Durasi: 4 Minggu | Tools: Figma, FigJam, Maze, Google Forms, Notion\n• Platform: Mobile App (iOS & Android) | Konteks: Evaluasi & redesain aplikasi perbankan syariah di Indonesia\n• Tujuan: Memodernisasi antarmuka dan merampingkan alur transaksi syariah guna meningkatkan kemudahan transfer antarbank, transparansi bagi hasil, serta aksesibilitas fitur Islami harian.\n\n2. IDENTIFIKASI MASALAH & TEMUAN UTAMA (PAIN POINTS)\n• Navigasi Rumit (Information Overload): Beranda memuat >20 ikon tanpa hierarki visual jelas, membingungkan pengguna baru.\n• Friksi Alur Transfer: Verifikasi rekening dan pemilihan sumber dana membutuhkan 6–7 langkah yang rentan salah klik.\n• Ketidakjelasan Istilah Syariah: Istilah akad (Mudharabah, Wadiah) dan mutasi bagi hasil ditampilkan tanpa konteks edukatif yang mudah dibaca.\n• Fitur Ekosistem Terisolasi: Fitur jadwal salat, arah kiblat, dan kalkulator zakat tersembunyi jauh di dalam sub-menu.\n\n3. ANALISIS PENGGUNA (PERSONA)\n• Persona 1 (Rian, 25 - Profesional Muda): Butuh transfer kilat, top-up e-wallet, cek saldo harian. Hambatan: lelah mencari menu transfer cepat karena dashboard penuh banner promo.\n• Persona 2 (Fatimah, 32 - Pengusaha Skala Kecil): Butuh rekap mutasi berkala, bayar zakat bisnis, ekspor bukti transfer. Hambatan: sulit melacak bagi hasil dan pembagian akad tabungan.\n\n4. PERANCANGAN SOLUSI (DESIGN SOLUTION)\n• Restrukturisasi Arsitektur Informasi (4 Pilar Bottom Bar): Beranda (saldo & mutasi cepat), Fitur Syariah (Zakat, Infaq, Salat, Kiblat), Riwayat (filter kategori & nisbah), Akun & Bantuan.\n• One-Step Transfer Setup: Integrasi pemilihan sumber dana, input nominal, dan deteksi otomatis bank tujuan ke form 1 halaman dinamis (memangkas langkah dari 7 layar menjadi 3 layar).\n• Smart Syariah Insights: Mengubah tampilan rincian bunga konvensional menjadi grafik mutasi bagi hasil transparan disertai tooltip penjelasan akad dalam bahasa sederhana.\n• Sticky Quick Actions & QRIS: Menempatkan tombol QRIS di tengah navigasi bawah untuk akses sekali ketuk di kasir.\n\n5. SISTEM DESAIN & PRINSIP VISUAL\n• Prinsip: Clean, Trustworthy, Serene, Modern.\n• Palet Warna: Emerald Deep & Sage Soft (integritas & rasa aman), Warm Sand & Soft Gold (aksen status sukses & fitur kunci), Neutral slate-50 (meminimalkan kelelahan mata).\n• Tipografi: Sans-serif modern berbobot jelas (Plus Jakarta Sans) untuk keterbacaan angka dan teks legal perbankan.\n\n6. VALIDASI & PENGUJIAN (USABILITY TESTING - MAZE)\nPengujian prototipe unmoderated terhadap 8 partisipan:\n• Task Success Rate: Meningkat dari 72% menjadi 96% (+24%)\n• Time-on-Task (Alur Transfer): Berkurang dari 48 detik menjadi 21 detik (56% lebih cepat)\n• System Usability Scale (SUS): Meningkat dari 61 (Marginal) menjadi 84 (Grade A / Excellent)\n\n7. REFLEKSI & DAMPAK BISNIS\n• Nilai Bisnis: Alur transfer ringkas menurunkan tingkat pembatalan transaksi (drop-off rate) dan meningkatkan volume donasi zakat karena terintegrasi langsung di dashboard.\n• Pembelajaran: Mendesain produk perbankan syariah menuntut keseimbangan antara kepatuhan regulasi/terminologi syariah dan kesederhanaan visual inklusif bagi generasi muda."
       },
       {
         title: "Visual Branding & Apparel Kit 'Bloom Studio'",
@@ -762,6 +774,7 @@
 
     // INITIAL PROFILE & SOCIAL LINKS
     const INITIAL_PROFILE = {
+      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80",
       linkedin: "https://linkedin.com/in/clara-sisteminformasi",
       github: "https://github.com/clara-si",
       instagram: "https://instagram.com/clara.studio",
@@ -771,11 +784,27 @@
       cvUrl: "https://example.com/cv-clara-sistem-informasi.pdf"
     };
 
-    const STORAGE_KEY_PROJ = 'portfolio_clara_projects_v3';
+    const STORAGE_KEY_PROJ = 'portfolio_clara_projects_v5';
     const STORAGE_KEY_PROF = 'portfolio_clara_profile_v3';
     const STORAGE_KEY_PIN_HASH = 'portfolio_clara_pin_hash_v3';
     // SHA-256 default hash (fallback) untuk "1234"
     const DEFAULT_PIN_HASH = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
+
+    // SVG Fallback image offline (kebal error 404 / koneksi putus)
+    const FALLBACK_IMAGE_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23FAF5F0'/%3E%3Ccircle cx='300' cy='180' r='48' fill='%23FCECEF'/%3E%3Ctext x='300' y='188' font-family='sans-serif' font-size='28' fill='%23E58C9A' text-anchor='middle'%3E✦%3C/text%3E%3Ctext x='300' y='250' font-family='sans-serif' font-size='14' font-weight='600' fill='%236E6265' text-anchor='middle'%3EGambar Proyek%3C/text%3E%3C/svg%3E";
+
+    // Sanitasi nomor WhatsApp otomatis (08xx -> 628xx, hapus spasi & tanda minus)
+    function cleanWaNumber(num) {
+      let cleaned = (num || '').toString().replace(/\D/g, '');
+      if (cleaned.startsWith('0')) cleaned = '62' + cleaned.slice(1);
+      if (!cleaned.startsWith('62') && cleaned.length >= 7) cleaned = '62' + cleaned;
+      return cleaned || '6281234567890';
+    }
+
+    // Scroll Lock saat modal terbuka
+    function setScrollLock(locked) {
+      document.body.classList.toggle('overflow-hidden', locked);
+    }
 
     async function sha256(str) {
       const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
@@ -830,6 +859,12 @@
 
     // RENDER PROFIL & SOCIAL LINKS DI BERBAGAI BAGIAN
     function renderProfileLinks() {
+      // 0. Foto Profil Hero
+      const heroProfileImg = document.getElementById('heroProfileImg');
+      if (heroProfileImg && profile.avatarUrl) {
+        heroProfileImg.src = profile.avatarUrl;
+      }
+
       // 1. Nav CV button
       const navCvBtn = document.getElementById('navCvBtn');
       navCvBtn.href = profile.cvUrl || '#';
@@ -892,12 +927,12 @@
           </div>
           <i class="ph-bold ph-arrow-up-right text-xs text-mutedGray group-hover:text-dustyRose"></i>
         </a>
-        <a href="https://wa.me/${profile.whatsapp}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-warmBeige/40 hover:bg-sageSoft border border-roseBorder rounded-xl transition-all group">
+        <a href="https://wa.me/${cleanWaNumber(profile.whatsapp)}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-warmBeige/40 hover:bg-sageSoft border border-roseBorder rounded-xl transition-all group">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-lg bg-white border border-roseBorder flex items-center justify-center text-sageMatcha text-lg"><i class="ph-bold ph-whatsapp-logo"></i></span>
             <div>
               <span class="text-xs font-bold text-charcoal block">WhatsApp Chat</span>
-              <span class="text-[11px] text-mutedGray">+${profile.whatsapp} &bull; Respon Cepat</span>
+              <span class="text-[11px] text-mutedGray">+${cleanWaNumber(profile.whatsapp)} &bull; Respon Cepat</span>
             </div>
           </div>
           <i class="ph-bold ph-arrow-up-right text-xs text-mutedGray group-hover:text-sageMatcha"></i>
@@ -952,7 +987,7 @@
         card.innerHTML = `
           <!-- Thumbnail + Category Badge -->
           <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-warmBeige cursor-pointer" onclick="openDetailModal(${rawIndex})">
-            <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80'">
+            <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src=FALLBACK_IMAGE_SVG;">
             <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-[11px] font-bold px-3 py-1 rounded-full text-charcoal border border-roseBorder shadow-sm">
               ${p.category}
             </span>
@@ -1011,7 +1046,9 @@
 
       document.getElementById('modalProjCat').textContent = p.category;
       document.getElementById('modalProjTitle').textContent = p.title;
-      document.getElementById('modalProjImg').src = p.img;
+      const modalImg = document.getElementById('modalProjImg');
+      modalImg.onerror = function() { this.onerror = null; this.src = FALLBACK_IMAGE_SVG; };
+      modalImg.src = p.img;
       document.getElementById('modalProjCaseStudy').textContent = p.caseStudy || p.desc;
 
       const tagsContainer = document.getElementById('modalProjTags');
@@ -1039,10 +1076,21 @@
       }
 
       detailModal.classList.remove('hidden');
+      setScrollLock(true);
     };
 
-    document.getElementById('closeDetailModalBtn').addEventListener('click', () => detailModal.classList.add('hidden'));
-    document.getElementById('closeDetailModalBtn2').addEventListener('click', () => detailModal.classList.add('hidden'));
+    function closeDetailModal() {
+      detailModal.classList.add('hidden');
+      setScrollLock(false);
+    }
+
+    document.getElementById('closeDetailModalBtn').addEventListener('click', closeDetailModal);
+    document.getElementById('closeDetailModalBtn2').addEventListener('click', closeDetailModal);
+
+    // Klik backdrop luar modal detail untuk menutup
+    detailModal.addEventListener('click', (e) => {
+      if (e.target === detailModal) closeDetailModal();
+    });
 
     // QUICK CONTACT FORM HANDLER (WA & EMAIL)
     document.getElementById('sendWaBtn').addEventListener('click', () => {
@@ -1050,11 +1098,11 @@
       const subject = document.getElementById('senderSubject').value.trim();
       const message = document.getElementById('senderMessage').value.trim();
       if (!name || !message) {
-        alert("Mohon isi nama dan pesan Anda terlebih dahulu.");
+        showToast("Mohon isi nama dan pesan Anda terlebih dahulu.", "⚠️");
         return;
       }
-      const text = `Halo Clara, saya *${name}*.\nSubjek: *${subject || 'Diskusi Proyek'}*\n\nPesan:\n${message}`;
-      window.open(`https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
+      const text = `Halo, saya *${name}*.\nSubjek: *${subject || 'Diskusi Proyek'}*\n\nPesan:\n${message}`;
+      window.open(`https://wa.me/${cleanWaNumber(profile.whatsapp)}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
     document.getElementById('sendMailBtn').addEventListener('click', () => {
@@ -1062,7 +1110,7 @@
       const subject = document.getElementById('senderSubject').value.trim();
       const message = document.getElementById('senderMessage').value.trim();
       if (!name || !message) {
-        alert("Mohon isi nama dan pesan Anda terlebih dahulu.");
+        showToast("Mohon isi nama dan pesan Anda terlebih dahulu.", "⚠️");
         return;
       }
       const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(subject || 'Pesan Portofolio dari ' + name)}&body=${encodeURIComponent('Nama: ' + name + '\n\nPesan:\n' + message)}`;
@@ -1079,9 +1127,15 @@
 
     function openAdminModal() {
       adminModal.classList.remove('hidden');
+      setScrollLock(true);
       pinInput.value = '';
       pinErrorMsg.classList.add('hidden');
       pinInput.focus();
+    }
+
+    function closeAdminModal() {
+      adminModal.classList.add('hidden');
+      setScrollLock(false);
     }
 
     document.getElementById('openCmsTrigger').addEventListener('click', openAdminModal);
@@ -1094,8 +1148,12 @@
       openAdminModal();
     }
 
-    // Shortcut keyboard rahasia: Ctrl + Shift + A (atau Cmd + Shift + A)
+    // Global Keydown Handler: Escape (tutup modal) & Ctrl+Shift+A (buka admin)
     window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!detailModal.classList.contains('hidden')) closeDetailModal();
+        if (!adminModal.classList.contains('hidden')) closeAdminModal();
+      }
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
         e.preventDefault();
         const trigger = document.getElementById('openCmsTrigger');
@@ -1104,8 +1162,11 @@
       }
     });
 
-    document.getElementById('closeCmsBtn').addEventListener('click', () => {
-      adminModal.classList.add('hidden');
+    document.getElementById('closeCmsBtn').addEventListener('click', closeAdminModal);
+
+    // Klik backdrop luar modal admin untuk menutup
+    adminModal.addEventListener('click', (e) => {
+      if (e.target === adminModal) closeAdminModal();
     });
 
     pinForm.addEventListener('submit', async (e) => {
@@ -1169,6 +1230,12 @@
       renderProjectsGrid();
       renderCmsProjectsList();
       resetProjectForm();
+
+      // Tutup modal dan beri notifikasi visual langsung
+      closeAdminModal();
+      showToast("Perubahan proyek berhasil disimpan ke website!");
+      const pSec = document.getElementById('projects');
+      if (pSec) pSec.scrollIntoView({ behavior: 'smooth' });
     });
 
     function resetProjectForm() {
@@ -1231,6 +1298,7 @@
 
     // FORM PENGATURAN PROFIL & LINK SOSMED
     function populateProfileForm() {
+      document.getElementById('cfgAvatarUrl').value = profile.avatarUrl || '';
       document.getElementById('cfgLinkedin').value = profile.linkedin || '';
       document.getElementById('cfgGithub').value = profile.github || '';
       document.getElementById('cfgInstagram').value = profile.instagram || '';
@@ -1243,6 +1311,7 @@
     document.getElementById('socialSettingsForm').addEventListener('submit', (e) => {
       e.preventDefault();
       profile = {
+        avatarUrl: document.getElementById('cfgAvatarUrl').value.trim() || INITIAL_PROFILE.avatarUrl,
         linkedin: document.getElementById('cfgLinkedin').value.trim(),
         github: document.getElementById('cfgGithub').value.trim(),
         instagram: document.getElementById('cfgInstagram').value.trim(),
@@ -1253,23 +1322,24 @@
       };
       saveProfile();
       renderProfileLinks();
-      alert("Profil dan Tautan Sosial Media berhasil diperbarui di seluruh halaman!");
+      closeAdminModal();
+      showToast("Profil dan tautan sosial berhasil diperbarui!");
     });
 
     // Handler Ganti Password Admin
     document.getElementById('btnChangePassword').addEventListener('click', async () => {
       const newPass = document.getElementById('cfgNewPassword').value.trim();
       if (!newPass || newPass.length < 4) {
-        alert("Password minimal 4 karakter.");
+        showToast("Password minimal 4 karakter.", "⚠️");
         return;
       }
       const newHash = await sha256(newPass);
       localStorage.setItem(STORAGE_KEY_PIN_HASH, newHash);
       document.getElementById('cfgNewPassword').value = '';
-      alert("Password Admin berhasil diganti! Gunakan password baru ini untuk masuk berikutnya.");
+      showToast("Password admin berhasil diganti!");
     });
 
-    // COPY CONFIG TOOLBAR & RESET
+    // COPY CONFIG TOOLBAR, IMPORT & RESET
     document.getElementById('copyJsonBtn').addEventListener('click', () => {
       const fullConfig = {
         profile: profile,
@@ -1277,11 +1347,49 @@
       };
       const jsonString = JSON.stringify(fullConfig, null, 2);
       navigator.clipboard.writeText(jsonString).then(() => {
-        alert("Konfigurasi JSON lengkap berhasil disalin ke clipboard! Siap di-paste ke script untuk GitHub Pages.");
+        showToast("Konfigurasi JSON berhasil disalin!");
       }).catch(() => {
         prompt("Salin manual data JSON ini:", jsonString);
       });
     });
+
+    // Safe Import JSON dengan validasi schema
+    const importJsonInput = document.getElementById('importJsonInput');
+    if (importJsonInput) {
+      importJsonInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const data = JSON.parse(ev.target.result);
+            if (!data || typeof data !== 'object') throw new Error("Format salah");
+            let importedAny = false;
+            if (Array.isArray(data.projects)) {
+              const validP = data.projects.filter(p => p && typeof p.title === 'string' && p.title.trim().length > 0);
+              if (validP.length > 0) {
+                projects = validP;
+                saveProjects();
+                importedAny = true;
+              }
+            }
+            if (data.profile && typeof data.profile === 'object') {
+              profile = { ...profile, ...data.profile };
+              saveProfile();
+              importedAny = true;
+            }
+            if (!importedAny) throw new Error("Tidak ada data valid ditemukan");
+            renderAll();
+            showToast("Database portofolio berhasil di-import!");
+          } catch (err) {
+            showToast("Gagal import: format JSON tidak sesuai.", "❌");
+          } finally {
+            importJsonInput.value = '';
+          }
+        };
+        reader.readAsText(file);
+      });
+    }
 
     document.getElementById('resetDefaultsBtn').addEventListener('click', () => {
       if (confirm("Reset semua proyek dan pengaturan kembali ke data contoh bawaan?")) {
@@ -1294,8 +1402,29 @@
       }
     });
 
+    function showToast(msg, icon = '✅') {
+      const toast = document.getElementById('toastNotification');
+      const msgEl = document.getElementById('toastMsg');
+      const iconEl = document.getElementById('toastIcon');
+      if (!toast) return;
+      msgEl.textContent = msg;
+      iconEl.textContent = icon;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3500);
+    }
+
     // Jalankan inisialisasi awal
     initData();
   </script>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-[9999] hidden items-center gap-2.5 bg-charcoal text-white text-xs font-bold px-5 py-3.5 rounded-2xl shadow-soft-lg border border-roseBorder transition-all duration-300">
+    <span id="toastIcon" class="text-base">✅</span>
+    <span id="toastMsg">Perubahan berhasil disimpan!</span>
+  </div>
 </body>
 </html>

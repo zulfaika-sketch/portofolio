@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amanah Mobile — Prototype UI/UX Perbankan Syariah</title>
+  
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emeraldDeep: '#1B4332',
+            emeraldMain: '#2D6A4F',
+            emeraldMid: '#40916C',
+            sageSoft: '#E8F5E9',
+            sageLight: '#F3F9F4',
+            warmSand: '#E9C46A',
+            softGold: '#F4A261',
+            charcoal: '#1F2421',
+            mutedGray: '#6C757D',
+            cardBg: '#FFFFFF',
+            slateBg: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-[#0F172A] text-charcoal font-sans min-h-screen py-4 sm:py-8 px-2 sm:px-4 flex flex-col items-center justify-center">
+
+  <!-- TOP BAR DESKTOP CONTROLS -->
+  <header class="w-full max-w-4xl mb-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-white px-2">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-semibold flex items-center gap-1.5 transition-all">
+        <i class="ph-bold ph-arrow-left"></i>
+        <span>Kembali ke Portofolio</span>
+      </a>
+      <div>
+        <h1 class="text-sm font-extrabold tracking-tight">Amanah Mobile — Interactive Prototype</h1>
+        <span class="text-[11px] text-gray-400">UI/UX Case Study • Redesain Mobile Banking Syariah</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="openMetricsModal()" class="px-3.5 py-1.5 rounded-full bg-emeraldMain hover:bg-emeraldMid text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+        <i class="ph-bold ph-chart-bar"></i>
+        <span>Lihat Hasil Usability Test (SUS 84)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SMARTPHONE DEVICE WRAPPER -->
+  <div class="relative w-full max-w-[390px] h-[812px] bg-white rounded-[44px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] border-[8px] border-[#2D3748] overflow-hidden flex flex-col">
+    
+    <!-- IPHONE DYNAMIC ISLAND / NOTCH -->
+    <div class="w-full h-7 bg-white flex items-center justify-between px-7 pt-2 select-none z-30">
+      <span class="text-[11px] font-bold tracking-tight">09:41</span>
+      <div class="w-20 h-4 bg-black rounded-full"></div>
+      <div class="flex items-center gap-1.5 text-xs text-charcoal">
+        <i class="ph-bold ph-wifi-high text-[11px]"></i>
+        <i class="ph-bold ph-battery-full text-xs"></i>
+      </div>
+    </div>
+
+    <!-- APP VIEW CONTAINER (SCROLLABLE) -->
+    <main class="flex-1 overflow-y-auto hide-scrollbar bg-slateBg pb-20 relative" id="appMainContainer">
+      
+      <!-- SCREEN 1: BERANDA -->
+      <section id="screenHome" class="space-y-4">
+        
+        <!-- Header User Profile & Salam -->
+        <div class="bg-gradient-to-b from-emeraldDeep via-emeraldMain to-emeraldMid text-white p-5 rounded-b-[28px] shadow-sm space-y-4">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-full bg-white/20 border border-white/30 flex items-center justify-center font-bold text-xs text-warmSand">
+                RN
+              </div>
+              <div>
+                <span class="text-[10px] text-emerald-200 block">Assalamu'alaikum,</span>
+                <span class="text-xs font-bold">Rian Naufal</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm" onclick="showToast('Tidak ada notifikasi baru')">
+                <i class="ph-bold ph-bell"></i>
+              </button>
+              <button class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm" onclick="openMetricsModal()">
+                <i class="ph-bold ph-question"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card Saldo Utama & Akad -->
+          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 space-y-3">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] font-semibold text-emerald-100">Tabungan Wadiah Utama</span>
+                <span class="bg-emeraldDeep/60 text-warmSand text-[9px] font-bold px-1.5 py-0.5 rounded border border-warmSand/30" title="Titipan murni tanpa biaya admin">Akad Wadiah</span>
+              </div>
+              <button onclick="toggleBalance()" class="text-emerald-100 hover:text-white text-xs">
+                <i class="ph-bold ph-eye" id="eyeIcon"></i>
+              </button>
+            </div>
+            <div>
+              <span class="text-xl font-extrabold tracking-tight text-white font-mono" id="balanceText">Rp 14.850.000</span>
+              <span class="text-[10px] text-emerald-200 block mt-0.5 font-mono">No. Rek: 7120-9981-44</span>
+            </div>
+            <div class="pt-2 border-t border-white/10 flex justify-between items-center text-[10px] text-emerald-100">
+              <span>Bagi Hasil (Nisbah) Bulan Ini</span>
+              <strong class="text-warmSand font-mono">+Rp 42.500</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Quick Actions (Sticky Core Pillar) -->
+        <div class="px-4">
+          <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-100 grid grid-cols-4 gap-2 text-center">
+            <button onclick="switchScreen('transfer')" class="flex flex-col items-center gap-1.5 group p-1">
+              <div class="w-11 h-11 rounded-2xl bg-sageSoft text-emeraldMain group-hover:bg-emeraldMain group-hover:text-white transition-all flex items-center justify-center text-lg shadow-sm">
+                <i class="ph-bold ph-paper-plane-tilt"></i>
+              </div>
+              <span class="text-[10px] font-bold text-charcoal">Transfer</span>
+            </button>
+
+            <button onclick="switchScreen('bill')" class="flex flex-col items-center gap-1.5 group p-1">
+              <div class="w-11 h-11 rounded-2xl bg-sageSoft text-emeraldMain group-hover:bg-emeraldMain group-hover:text-white transition-all flex items-center justify-center text-lg shadow-sm">
+                <i class="ph-bold ph-receipt"></i>
+              </div>
+              <span class="text-[10px] font-bold text-charcoal">Bayar/Beli</span>
+            </button>
+
+            <button onclick="switchScreen('topup')" class="flex flex-col items-center gap-1.5 group p-1">
+              <div class="w-11 h-11 rounded-2xl bg-sageSoft text-emeraldMain group-hover:bg-emeraldMain group-hover:text-white transition-all flex items-center justify-center text-lg shadow-sm">
+                <i class="ph-bold ph-wallet"></i>
+              </div>
+              <span class="text-[10px] font-bold text-charcoal">Top Up</span>
+            </button>
+
+            <button onclick="switchScreen('syariah')" class="flex flex-col items-center gap-1.5 group p-1">
+              <div class="w-11 h-11 rounded-2xl bg-amber-50 text-softGold group-hover:bg-softGold group-hover:text-white transition-all flex items-center justify-center text-lg shadow-sm">
+                <i class="ph-bold ph-hand-heart"></i>
+              </div>
+              <span class="text-[10px] font-bold text-charcoal">ZISWAF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Banner Edukasi Smart Syariah Insights -->
+        <div class="px-4">
+          <div class="bg-gradient-to-r from-emeraldDeep to-emeraldMain text-white rounded-2xl p-3.5 shadow-sm flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="text-[9px] uppercase font-bold tracking-wider text-warmSand flex items-center gap-1">
+                <i class="ph-bold ph-sparkle"></i> Smart Syariah Insights
+              </span>
+              <h3 class="text-xs font-bold leading-tight">Transparansi Bagi Hasil (Nisbah)</h3>
+              <p class="text-[10px] text-emerald-100">Bukan bunga pinjaman, melainkan bagi hasil riil usaha produktif mitra.</p>
+            </div>
+            <button onclick="switchScreen('history')" class="px-2.5 py-1.5 bg-white/20 hover:bg-white/30 text-white text-[10px] font-bold rounded-xl whitespace-nowrap">
+              Cek Rincian
+            </button>
+          </div>
+        </div>
+
+        <!-- Mutasi Cepat / Transaksi Terakhir -->
+        <div class="px-4 space-y-2.5">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-extrabold text-charcoal">Mutasi Terakhir</span>
+            <button onclick="switchScreen('history')" class="text-[11px] font-bold text-emeraldMain hover:underline">Lihat Semua</button>
+          </div>
+
+          <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-100 divide-y divide-slate-100" id="homeMutasiList">
+            <!-- Dynamic Home Mutasi -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: ONE-STEP TRANSFER SETUP -->
+      <section id="screenTransfer" class="space-y-4 px-4 pt-4 hidden">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <button onclick="switchScreen('home')" class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-xs">
+              <i class="ph-bold ph-arrow-left"></i>
+            </button>
+            <h2 class="text-xs font-extrabold text-charcoal">One-Step Transfer Setup</h2>
+          </div>
+          <span class="text-[9px] font-bold text-emeraldMain bg-sageSoft px-2 py-0.5 rounded-full">3 Layar &rarr; 1 Form</span>
+        </div>
+
+        <!-- Form Transfer Satu Halaman -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3.5">
+          
+          <!-- Sumber Rekening -->
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1">1. Rekening Sumber Dana</label>
+            <div class="p-2.5 bg-slateBg rounded-xl border border-slate-200 flex justify-between items-center">
+              <div>
+                <span class="text-xs font-bold text-charcoal block">Wadiah Utama (7120-9981-44)</span>
+                <span class="text-[10px] text-mutedGray">Saldo Aktif: <strong class="text-emeraldMain currentBalanceLabel">Rp 14.850.000</strong></span>
+              </div>
+              <i class="ph-bold ph-check-circle text-emeraldMain text-base"></i>
+            </div>
+          </div>
+
+          <!-- Bank & No Rek Tujuan (Auto-Detect) -->
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1">2. Bank & Nomor Rekening Tujuan</label>
+            <div class="space-y-2">
+              <select id="transferBankSelect" class="w-full text-xs font-semibold p-2 bg-slateBg rounded-xl border border-slate-200 focus:outline-none focus:border-emeraldMain">
+                <option value="Bank Syariah Indonesia (BSI)">Bank Syariah Indonesia (BSI) - 451</option>
+                <option value="Bank Muamalat">Bank Muamalat - 147</option>
+                <option value="BCA Syariah">BCA Syariah - 536</option>
+                <option value="Bank Mega Syariah">Bank Mega Syariah - 506</option>
+              </select>
+              
+              <div class="relative">
+                <input type="number" id="transferAccountInput" oninput="mockVerifyAccount()" placeholder="Masukkan No. Rekening Tujuan..." class="w-full text-xs p-2.5 pr-20 bg-slateBg rounded-xl border border-slate-200 focus:outline-none focus:border-emeraldMain font-mono font-bold">
+                <button type="button" onclick="mockVerifyAccount(true)" class="absolute right-1.5 top-1.5 px-2.5 py-1 bg-emeraldMain text-white rounded-lg text-[10px] font-bold hover:bg-emeraldMid">
+                  Cek Rek
+                </button>
+              </div>
+
+              <!-- Status Verifikasi Nama Pemilik -->
+              <div id="verifiedAccountBox" class="p-2 bg-sageSoft rounded-xl border border-emerald-200 flex items-center justify-between text-[11px] hidden">
+                <div class="flex items-center gap-1.5">
+                  <i class="ph-bold ph-check-circle text-emeraldMain"></i>
+                  <span class="font-bold text-charcoal" id="verifiedAccountName">FATIMAH AZ-ZAHRA</span>
+                </div>
+                <span class="text-[10px] text-emeraldMain font-semibold">Terverifikasi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nominal Transfer & Quick Pills -->
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1">3. Nominal Transfer (Rp)</label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-xs font-bold text-mutedGray">Rp</span>
+              <input type="number" id="transferAmountInput" placeholder="50.000" class="w-full text-sm font-extrabold pl-9 pr-3 py-2 bg-slateBg rounded-xl border border-slate-200 focus:outline-none focus:border-emeraldMain font-mono">
+            </div>
+            <!-- Quick Nominal Pills -->
+            <div class="flex items-center gap-1.5 pt-1.5">
+              <button onclick="setTransferAmount(50000)" class="px-2 py-1 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">50K</button>
+              <button onclick="setTransferAmount(100000)" class="px-2 py-1 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">100K</button>
+              <button onclick="setTransferAmount(250000)" class="px-2 py-1 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">250K</button>
+              <button onclick="setTransferAmount(500000)" class="px-2 py-1 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">500K</button>
+            </div>
+          </div>
+
+          <!-- Catatan / Keterangan -->
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1">4. Catatan (Opsional)</label>
+            <input type="text" id="transferNoteInput" placeholder="Cth: Pembayaran pesanan gamis" class="w-full text-xs p-2 bg-slateBg rounded-xl border border-slate-200 focus:outline-none focus:border-emeraldMain">
+          </div>
+
+          <div class="pt-2">
+            <button onclick="executeTransfer()" class="w-full py-3 bg-emeraldMain hover:bg-emeraldMid text-white font-extrabold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-shield-check text-sm"></i>
+              <span>Konfirmasi & Kirim Dana</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: BAYAR & BELI TAGIHAN (NEW) -->
+      <section id="screenBill" class="space-y-4 px-4 pt-4 hidden">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <button onclick="switchScreen('home')" class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-xs">
+              <i class="ph-bold ph-arrow-left"></i>
+            </button>
+            <h2 class="text-xs font-extrabold text-charcoal">Bayar & Beli Tagihan</h2>
+          </div>
+          <span class="text-[9px] font-bold text-emeraldMain bg-sageSoft px-2 py-0.5 rounded-full">Bebas Admin Syariah</span>
+        </div>
+
+        <!-- Grid Kategori Tagihan -->
+        <div class="grid grid-cols-4 gap-2 text-center" id="billCategoryGrid">
+          <button onclick="selectBillType('pln')" id="btnBillPln" class="bill-btn p-2 rounded-2xl border border-emeraldMain bg-sageSoft text-emeraldMain flex flex-col items-center gap-1 transition-all">
+            <i class="ph-bold ph-lightning text-lg"></i>
+            <span class="text-[9px] font-bold">PLN</span>
+          </button>
+          <button onclick="selectBillType('bpjs')" id="btnBillBpjs" class="bill-btn p-2 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all">
+            <i class="ph-bold ph-first-aid text-lg"></i>
+            <span class="text-[9px] font-bold">BPJS</span>
+          </button>
+          <button onclick="selectBillType('pdam')" id="btnBillPdam" class="bill-btn p-2 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all">
+            <i class="ph-bold ph-drop text-lg"></i>
+            <span class="text-[9px] font-bold">PDAM</span>
+          </button>
+          <button onclick="selectBillType('pulsa')" id="btnBillPulsa" class="bill-btn p-2 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all">
+            <i class="ph-bold ph-device-mobile text-lg"></i>
+            <span class="text-[9px] font-bold">Pulsa</span>
+          </button>
+        </div>
+
+        <!-- Form Tagihan Dinamis -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3.5">
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1" id="billInputLabel">Nomor ID Pelanggan / Meter PLN</label>
+            <div class="relative">
+              <input type="text" id="billInputNumber" value="54120098411" class="w-full text-xs font-mono font-bold p-2.5 pr-16 bg-slateBg rounded-xl border border-slate-200 focus:outline-none focus:border-emeraldMain">
+              <button onclick="checkBillInquiry()" class="absolute right-1.5 top-1.5 px-2.5 py-1 bg-emeraldMain text-white rounded-lg text-[10px] font-bold hover:bg-emeraldMid">
+                Cek
+              </button>
+            </div>
+          </div>
+
+          <!-- Pilihan Paket Khusus Pulsa (Hidden for PLN/BPJS) -->
+          <div id="pulsaPackageSelector" class="hidden space-y-1.5">
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block">Pilih Nominal Pulsa</label>
+            <div class="grid grid-cols-3 gap-1.5">
+              <button type="button" onclick="setPulsaAmount(25000)" class="p-2 border border-slate-200 rounded-xl text-center text-xs font-bold hover:border-emeraldMain hover:bg-sageSoft/60">25K</button>
+              <button type="button" onclick="setPulsaAmount(50000)" class="p-2 border border-emeraldMain bg-sageSoft rounded-xl text-center text-xs font-bold text-emeraldMain">50K</button>
+              <button type="button" onclick="setPulsaAmount(100000)" class="p-2 border border-slate-200 rounded-xl text-center text-xs font-bold hover:border-emeraldMain hover:bg-sageSoft/60">100K</button>
+            </div>
+          </div>
+
+          <!-- Box Rincian Tagihan Inquiry -->
+          <div class="p-3 bg-sageSoft rounded-2xl border border-emerald-200 space-y-2 text-xs">
+            <div class="flex justify-between items-center text-[11px] pb-1.5 border-b border-emerald-200/60">
+              <span class="text-mutedGray">Nama Pelanggan:</span>
+              <strong class="text-charcoal" id="billCustomerName">RIAN NAUFAL</strong>
+            </div>
+            <div class="flex justify-between items-center text-[11px]">
+              <span class="text-mutedGray" id="billDescLabel">Tagihan Listrik PLN (Okt 2026):</span>
+              <strong class="font-mono text-charcoal" id="billAmountText">Rp 178.500</strong>
+            </div>
+            <div class="flex justify-between items-center text-[11px]">
+              <span class="text-mutedGray">Biaya Admin Syariah:</span>
+              <span class="font-bold text-emeraldMain">Rp 0 (Bebas Riba)</span>
+            </div>
+            <div class="flex justify-between items-center pt-1.5 border-t border-emerald-200/60 font-bold">
+              <span>Total Pembayaran:</span>
+              <span class="font-mono text-emeraldDeep text-sm" id="billTotalText">Rp 178.500</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1">Sumber Dana</label>
+            <div class="p-2 bg-slateBg rounded-xl border border-slate-200 flex justify-between items-center text-xs">
+              <span>Wadiah Utama (7120-9981-44)</span>
+              <strong class="text-emeraldMain currentBalanceLabel">Rp 14.850.000</strong>
+            </div>
+          </div>
+
+          <button onclick="executeBillPayment()" class="w-full py-3 bg-emeraldMain hover:bg-emeraldMid text-white font-extrabold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5">
+            <i class="ph-bold ph-check-circle text-sm"></i>
+            <span>Bayar Tagihan Sekarang</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: TOP UP E-WALLET (NEW) -->
+      <section id="screenTopup" class="space-y-4 px-4 pt-4 hidden">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <button onclick="switchScreen('home')" class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-xs">
+              <i class="ph-bold ph-arrow-left"></i>
+            </button>
+            <h2 class="text-xs font-extrabold text-charcoal">Top Up E-Wallet</h2>
+          </div>
+          <span class="text-[9px] font-bold text-softGold bg-amber-50 px-2 py-0.5 rounded-full">Instant Sync</span>
+        </div>
+
+        <!-- Pilih Merchant E-Wallet -->
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block">Pilih Dompet Digital</label>
+          <div class="grid grid-cols-4 gap-2 text-center" id="walletSelectorGrid">
+            <button onclick="selectWallet('GoPay')" id="btnWalletGoPay" class="wallet-btn p-2.5 rounded-2xl border border-emeraldMain bg-sageSoft text-emeraldMain flex flex-col items-center gap-1 transition-all">
+              <i class="ph-bold ph-wallet text-lg"></i>
+              <span class="text-[9px] font-extrabold">GoPay</span>
+            </button>
+            <button onclick="selectWallet('ShopeePay')" id="btnWalletShopeePay" class="wallet-btn p-2.5 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all">
+              <i class="ph-bold ph-shopping-bag text-lg"></i>
+              <span class="text-[9px] font-extrabold">Shopee</span>
+            </button>
+            <button onclick="selectWallet('OVO')" id="btnWalletOVO" class="wallet-btn p-2.5 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all">
+              <i class="ph-bold ph-coins text-lg"></i>
+              <span class="text-[9px] font-extrabold">OVO</span>
+            </button>
+            <button onclick="selectWallet('DANA')" id="btnWalletDANA" class="wallet-btn p-2.5 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all">
+              <i class="ph-bold ph-credit-card text-lg"></i>
+              <span class="text-[9px] font-extrabold">DANA</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Topup -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3.5">
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1">Nomor Handphone Terdaftar</label>
+            <div class="relative">
+              <input type="tel" id="topupPhoneInput" value="0812-9876-5432" class="w-full text-xs font-mono font-bold p-2.5 bg-slateBg rounded-xl border border-slate-200 focus:outline-none focus:border-emeraldMain">
+              <span class="absolute right-3 top-2.5 text-[10px] text-emeraldMain font-bold bg-sageSoft px-1.5 py-0.5 rounded">Rian (Akun Utama)</span>
+            </div>
+          </div>
+
+          <!-- Nominal Top Up -->
+          <div>
+            <label class="text-[10px] font-bold text-mutedGray uppercase tracking-wider block mb-1">Nominal Top Up</label>
+            <div class="relative">
+              <span class="absolute left-3 top-2 text-xs font-bold text-mutedGray">Rp</span>
+              <input type="number" id="topupAmountInput" value="100000" class="w-full text-sm font-extrabold pl-9 pr-3 py-2 bg-slateBg rounded-xl border border-slate-200 focus:outline-none focus:border-emeraldMain font-mono">
+            </div>
+            <!-- Quick Pills -->
+            <div class="grid grid-cols-4 gap-1.5 pt-1.5">
+              <button onclick="setTopupAmount(25000)" class="p-1.5 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">25K</button>
+              <button onclick="setTopupAmount(50000)" class="p-1.5 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">50K</button>
+              <button onclick="setTopupAmount(100000)" class="p-1.5 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">100K</button>
+              <button onclick="setTopupAmount(200000)" class="p-1.5 bg-slateBg rounded-lg border border-slate-200 text-[10px] font-bold text-charcoal hover:bg-slate-200">200K</button>
+            </div>
+          </div>
+
+          <div class="p-2.5 bg-slateBg rounded-xl border border-slate-200 space-y-1 text-[11px]">
+            <div class="flex justify-between text-mutedGray">
+              <span>Biaya Transaksi:</span>
+              <span class="font-bold text-emeraldMain">Rp 0 (Promo Syariah)</span>
+            </div>
+            <div class="flex justify-between text-mutedGray">
+              <span>Metode Debet:</span>
+              <span>Wadiah Utama (Otomatis)</span>
+            </div>
+          </div>
+
+          <button onclick="executeTopup()" class="w-full py-3 bg-emeraldMain hover:bg-emeraldMid text-white font-extrabold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5">
+            <i class="ph-bold ph-plus-circle text-sm"></i>
+            <span id="topupBtnText">Top Up Rp 100.000 ke GoPay</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 5: FITUR ISLAMI & ZISWAF -->
+      <section id="screenSyariah" class="space-y-4 px-4 pt-4 hidden">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <button onclick="switchScreen('home')" class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-xs">
+              <i class="ph-bold ph-arrow-left"></i>
+            </button>
+            <h2 class="text-xs font-extrabold text-charcoal">Ekosistem Islami & ZISWAF</h2>
+          </div>
+          <span class="text-[9px] font-bold text-softGold bg-amber-50 px-2 py-0.5 rounded-full">Kalkulator Zakat Mal</span>
+        </div>
+
+        <!-- Widget Jadwal Salat & Kiblat -->
+        <div class="bg-gradient-to-r from-emeraldMain to-emeraldDeep text-white rounded-2xl p-3.5 shadow-sm space-y-2">
+          <div class="flex justify-between items-center text-[10px]">
+            <span class="flex items-center gap-1 text-emerald-200">
+              <i class="ph-bold ph-map-pin"></i> DKI Jakarta & Sekitarnya
+            </span>
+            <span class="font-mono text-warmSand font-bold">17 Rabi'ul Akhir 1448 H</span>
+          </div>
+          <div class="grid grid-cols-5 gap-1 text-center pt-1">
+            <div class="p-1 rounded-lg bg-white/10">
+              <span class="text-[9px] text-emerald-200 block">Subuh</span>
+              <span class="text-[10px] font-bold font-mono">04:18</span>
+            </div>
+            <div class="p-1 rounded-lg bg-white/10">
+              <span class="text-[9px] text-emerald-200 block">Dzuhur</span>
+              <span class="text-[10px] font-bold font-mono">11:44</span>
+            </div>
+            <div class="p-1 rounded-lg bg-white/20 border border-warmSand/60">
+              <span class="text-[9px] text-warmSand block font-bold">Ashar</span>
+              <span class="text-[10px] font-bold font-mono text-white">14:58</span>
+            </div>
+            <div class="p-1 rounded-lg bg-white/10">
+              <span class="text-[9px] text-emerald-200 block">Maghrib</span>
+              <span class="text-[10px] font-bold font-mono">17:55</span>
+            </div>
+            <div class="p-1 rounded-lg bg-white/10">
+              <span class="text-[9px] text-emerald-200 block">Isya</span>
+              <span class="text-[10px] font-bold font-mono">19:06</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kalkulator Zakat Mal Otomatis -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-bold text-charcoal flex items-center gap-1.5">
+              <i class="ph-bold ph-calculator text-emeraldMain"></i>
+              <span>Kalkulator Zakat Penghasilan / Mal</span>
+            </h3>
+            <span class="text-[9px] text-mutedGray">Nisab: 85g Emas</span>
+          </div>
+
+          <div>
+            <label class="text-[10px] font-semibold text-mutedGray block mb-1">Total Simpanan / Harta Selama 1 Tahun (Rp):</label>
+            <input type="number" id="zakatWealthInput" oninput="calculateZakat()" value="100000000" class="w-full text-xs p-2 bg-slateBg rounded-xl border border-slate-200 font-mono font-bold">
+          </div>
+
+          <div class="p-3 bg-sageSoft rounded-xl border border-emerald-200 space-y-1.5">
+            <div class="flex justify-between text-[11px]">
+              <span class="text-mutedGray">Status Kewajiban:</span>
+              <strong class="text-emeraldMain" id="zakatStatus">Wajib Zakat (Mencapai Nisab)</strong>
+            </div>
+            <div class="flex justify-between text-xs pt-1 border-t border-emerald-200/60 font-bold">
+              <span>Zakat Wajib Dikeluarkan (2.5%):</span>
+              <span class="font-mono text-emeraldDeep text-sm" id="zakatAmountVal">Rp 2.500.000</span>
+            </div>
+          </div>
+
+          <button onclick="payZakatDirect()" class="w-full py-2.5 bg-emeraldMain hover:bg-emeraldMid text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5">
+            <i class="ph-bold ph-heart"></i>
+            <span>Tunaikan Zakat via BAZNAS / Lembaga Resmi</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SCREEN 6: RIWAYAT & DETAIL BAGI HASIL NISBAH -->
+      <section id="screenHistory" class="space-y-4 px-4 pt-4 hidden">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <button onclick="switchScreen('home')" class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-xs">
+              <i class="ph-bold ph-arrow-left"></i>
+            </button>
+            <h2 class="text-xs font-extrabold text-charcoal">Riwayat & Transparansi Nisbah</h2>
+          </div>
+          <span class="text-[9px] font-bold text-emeraldMain bg-sageSoft px-2 py-0.5 rounded-full">Akad Syariah</span>
+        </div>
+
+        <!-- Card Perbandingan Nisbah vs Konvensional -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3">
+          <div class="space-y-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-mutedGray">Simulasi Transparansi</span>
+            <h4 class="text-xs font-bold text-charcoal">Distribusi Nisbah Mudharabah Bulan Oktober</h4>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between p-2 bg-slateBg rounded-xl">
+              <span class="text-mutedGray">Porsi Nasabah (Shahibul Maal):</span>
+              <strong class="font-mono text-charcoal">65%</strong>
+            </div>
+            <div class="flex justify-between p-2 bg-slateBg rounded-xl">
+              <span class="text-mutedGray">Porsi Bank (Mudharib):</span>
+              <strong class="font-mono text-charcoal">35%</strong>
+            </div>
+            <div class="flex justify-between p-2 bg-sageSoft rounded-xl border border-emerald-200">
+              <span class="text-emeraldMain font-bold">Hasil Masuk ke Tabungan:</span>
+              <strong class="font-mono text-emeraldMain font-extrabold">+Rp 42.500</strong>
+            </div>
+          </div>
+          <p class="text-[10px] text-mutedGray leading-relaxed">
+            *Dihitung dari laba riil pembiayaan UMKM halal. Nilai nisbah tidak dipatok bunga tetap, adil dan terbebas dari unsur riba.
+          </p>
+        </div>
+
+        <!-- Daftar Mutasi Lengkap -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-extrabold text-charcoal">Semua Catatan Transaksi</span>
+            <span class="text-[10px] text-mutedGray font-medium">Bulan Berjalan</span>
+          </div>
+          <div class="divide-y divide-slate-100" id="fullMutasiList">
+            <!-- Full Mutasi Items -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- STICKY BOTTOM NAVIGATION BAR (4 PILAR + FLOATING QRIS) -->
+    <nav class="absolute bottom-0 inset-x-0 h-16 bg-white border-t border-slate-200 flex items-center justify-around px-3 z-30 select-none shadow-lg">
+      
+      <!-- Nav 1: Beranda -->
+      <button onclick="switchScreen('home')" id="navHome" class="flex flex-col items-center gap-1 text-emeraldMain">
+        <i class="ph-bold ph-house text-lg"></i>
+        <span class="text-[9px] font-bold">Beranda</span>
+      </button>
+
+      <!-- Nav 2: Transfer -->
+      <button onclick="switchScreen('transfer')" id="navTransfer" class="flex flex-col items-center gap-1 text-mutedGray hover:text-emeraldMain">
+        <i class="ph-bold ph-arrows-left-right text-lg"></i>
+        <span class="text-[9px] font-semibold">Transfer</span>
+      </button>
+
+      <!-- FLOATING CENTER QRIS -->
+      <div class="relative -top-4">
+        <button onclick="openQrisModal()" class="w-12 h-12 rounded-full bg-emeraldMain hover:bg-emeraldMid text-white flex items-center justify-center shadow-lg border-4 border-white transition-transform active:scale-95" title="Scan QRIS">
+          <i class="ph-bold ph-qr-code text-xl"></i>
+        </button>
+      </div>
+
+      <!-- Nav 3: Fitur Syariah -->
+      <button onclick="switchScreen('syariah')" id="navSyariah" class="flex flex-col items-center gap-1 text-mutedGray hover:text-emeraldMain">
+        <i class="ph-bold ph-moon-stars text-lg"></i>
+        <span class="text-[9px] font-semibold">Syariah</span>
+      </button>
+
+      <!-- Nav 4: Riwayat -->
+      <button onclick="switchScreen('history')" id="navHistory" class="flex flex-col items-center gap-1 text-mutedGray hover:text-emeraldMain">
+        <i class="ph-bold ph-clock-counter-clockwise text-lg"></i>
+        <span class="text-[9px] font-semibold">Mutasi</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- MODAL QRIS INSTANT SCAN -->
+  <div id="qrisModal" class="fixed inset-0 z-50 bg-charcoal/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 max-w-xs w-full text-center space-y-4 shadow-2xl">
+      <div class="flex justify-between items-center pb-2 border-b border-slate-100">
+        <span class="text-xs font-bold text-charcoal">QRIS Instant Syariah</span>
+        <button onclick="closeQrisModal()" class="w-6 h-6 rounded-full bg-slateBg flex items-center justify-center text-xs">
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+      <div class="w-48 h-48 mx-auto bg-slateBg p-2 rounded-2xl border border-slate-200 flex items-center justify-center">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=AMANAH-MOBILE-QRIS-DEMO" alt="QRIS Demo" class="w-full h-full object-contain">
+      </div>
+      <p class="text-[10px] text-mutedGray leading-tight">
+        Arahkan kamera ke kode QR merchant di kasir untuk transaksi sekali ketuk tanpa repot input nomor rekening.
+      </p>
+      <button onclick="closeQrisModal()" class="w-full py-2 bg-emeraldMain text-white font-bold text-xs rounded-xl">
+        Tutup
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL METRIK USABILITY TESTING (MAZE) -->
+  <div id="metricsModal" class="fixed inset-0 z-50 bg-charcoal/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl p-6 max-w-lg w-full space-y-5 shadow-2xl relative my-8">
+      <button onclick="closeMetricsModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-slateBg flex items-center justify-center text-xs">
+        <i class="ph-bold ph-x"></i>
+      </button>
+
+      <div>
+        <span class="text-[10px] font-bold uppercase tracking-wider text-emeraldMain bg-sageSoft px-2.5 py-1 rounded-md">Evaluasi Usability Testing (Maze)</span>
+        <h3 class="text-base font-extrabold text-charcoal mt-2">Hasil Validasi & Pengujian Terhadap 8 Partisipan</h3>
+        <p class="text-xs text-mutedGray mt-1">Uji coba unmoderated mengukur alur transfer satu formulir, pembayaran tagihan, topup, dan akses ZISWAF.</p>
+      </div>
+
+      <!-- Tabel Metrik -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slateBg text-mutedGray uppercase text-[10px]">
+            <tr>
+              <th class="p-2.5 rounded-l-xl">Metrik Evaluasi</th>
+              <th class="p-2.5">Desain Lama</th>
+              <th class="p-2.5">Desain Baru</th>
+              <th class="p-2.5 text-right rounded-r-xl">Peningkatan</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-2.5 font-bold text-charcoal">Task Success Rate</td>
+              <td class="p-2.5 text-mutedGray">72%</td>
+              <td class="p-2.5 font-bold text-emeraldMain">96%</td>
+              <td class="p-2.5 text-right font-extrabold text-emeraldMain">+24%</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-bold text-charcoal">Time-on-Task (Alur Transfer)</td>
+              <td class="p-2.5 text-mutedGray">48 detik</td>
+              <td class="p-2.5 font-bold text-emeraldMain">21 detik</td>
+              <td class="p-2.5 text-right font-extrabold text-emeraldMain">56% lebih cepat</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-bold text-charcoal">System Usability Scale (SUS)</td>
+              <td class="p-2.5 text-mutedGray">61 (Marginal)</td>
+              <td class="p-2.5 font-bold text-emeraldMain">84 (Excellent)</td>
+              <td class="p-2.5 text-right font-extrabold text-emeraldMain">+23 poin</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-3 bg-sageSoft rounded-2xl border border-emerald-200 text-xs text-emeraldDeep space-y-1">
+        <strong>Kesimpulan Pengujian:</strong>
+        <p class="text-[11px] leading-relaxed">
+          Penyederhanaan formulir transaksi dari multi-layar menjadi 1 formulir terpadu memangkas drop-off rate secara signifikan, sementara tab terdedikasi untuk ZISWAF melipatgandakan keterlibatan donasi pengguna.
+        </p>
+      </div>
+
+      <button onclick="closeMetricsModal()" class="w-full py-2.5 bg-emeraldMain text-white font-bold text-xs rounded-xl">
+        Kembali ke Demo
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-charcoal text-white text-xs font-semibold px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none">
+    <i class="ph-bold ph-check-circle text-emeraldMain text-base"></i>
+    <span id="toastMsg">Berhasil diproses.</span>
+  </div>
+
+  <!-- SCRIPT PROTOTYPE LOGIC -->
+  <script>
+    let currentBalance = 14850000;
+    let balanceVisible = true;
+
+    // Mutasi Data Reactive
+    let mutasiData = [
+      { id: 1, title: "Transfer ke Fatimah", subtitle: "Bank Syariah Indonesia • Hari ini, 08:30", amount: -350000, type: "transfer" },
+      { id: 2, title: "Infaq Subuh Otomatis", subtitle: "BAZNAS RI • Kemarin, 05:00", amount: -25000, type: "infaq" },
+      { id: 3, title: "Bagi Hasil Akad Mudharabah", subtitle: "Distribusi Nisbah • 25 Okt 2026", amount: 42500, type: "nisbah" }
+    ];
+
+    function rupiah(num) {
+      return "Rp " + Number(num || 0).toLocaleString("id-ID");
+    }
+
+    function updateBalanceUI() {
+      const el = document.getElementById('balanceText');
+      if (balanceVisible) {
+        el.textContent = rupiah(currentBalance);
+      } else {
+        el.textContent = "Rp ••••••••";
+      }
+      document.querySelectorAll('.currentBalanceLabel').forEach(b => {
+        b.textContent = rupiah(currentBalance);
+      });
+    }
+
+    function toggleBalance() {
+      balanceVisible = !balanceVisible;
+      const icon = document.getElementById('eyeIcon');
+      icon.className = balanceVisible ? "ph-bold ph-eye" : "ph-bold ph-eye-slash";
+      updateBalanceUI();
+    }
+
+    // SCREEN SWITCHER
+    function switchScreen(screen) {
+      const screens = ['home', 'transfer', 'bill', 'topup', 'syariah', 'history'];
+      screens.forEach(s => {
+        const el = document.getElementById('screen' + s.charAt(0).toUpperCase() + s.slice(1));
+        if (el) el.classList.toggle('hidden', s !== screen);
+      });
+
+      // Update Nav active style
+      const navs = ['Home', 'Transfer', 'Syariah', 'History'];
+      navs.forEach(n => {
+        const btn = document.getElementById('nav' + n);
+        const isCur = n.toLowerCase() === screen;
+        btn.className = isCur 
+          ? "flex flex-col items-center gap-1 text-emeraldMain font-bold" 
+          : "flex flex-col items-center gap-1 text-mutedGray hover:text-emeraldMain";
+      });
+
+      // Scroll container to top
+      document.getElementById('appMainContainer').scrollTop = 0;
+    }
+
+    // MUTASI RENDERER
+    function renderMutasi() {
+      const homeList = document.getElementById('homeMutasiList');
+      const fullList = document.getElementById('fullMutasiList');
+
+      const itemHtml = (item) => {
+        const isPositive = item.amount > 0;
+        const iconBg = item.type === 'transfer' ? 'bg-rose-50 text-rose-500' :
+                       item.type === 'bill' ? 'bg-blue-50 text-blue-500' :
+                       item.type === 'topup' ? 'bg-purple-50 text-purple-500' :
+                       item.type === 'infaq' ? 'bg-emerald-50 text-emeraldMain' : 'bg-amber-50 text-softGold';
+        const iconClass = item.type === 'transfer' ? 'ph-bold ph-arrow-up-right' :
+                          item.type === 'bill' ? 'ph-bold ph-receipt' :
+                          item.type === 'topup' ? 'ph-bold ph-wallet' :
+                          item.type === 'infaq' ? 'ph-bold ph-hand-heart' : 'ph-bold ph-trend-up';
+
+        return `
+          <div class="flex items-center justify-between text-xs py-2.5">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-xl ${iconBg} flex items-center justify-center text-sm font-bold flex-shrink-0">
+                <i class="${iconClass}"></i>
+              </div>
+              <div class="pr-2">
+                <span class="font-bold text-charcoal block text-[11px] line-clamp-1">${item.title}</span>
+                <span class="text-[9px] text-mutedGray">${item.subtitle}</span>
+              </div>
+            </div>
+            <span class="font-mono font-bold text-xs whitespace-nowrap ${isPositive ? 'text-emeraldMain' : 'text-rose-600'}">
+              ${isPositive ? '+' : ''}${rupiah(item.amount)}
+            </span>
+          </div>
+        `;
+      };
+
+      if (homeList) homeList.innerHTML = mutasiData.slice(0, 3).map(itemHtml).join('');
+      if (fullList) fullList.innerHTML = mutasiData.map(itemHtml).join('');
+    }
+
+    // 1. TRANSFER LOGIC
+    function mockVerifyAccount(manual = false) {
+      const val = document.getElementById('transferAccountInput').value.trim();
+      const box = document.getElementById('verifiedAccountBox');
+      if (val.length >= 8 || manual) {
+        box.classList.remove('hidden');
+      } else {
+        box.classList.add('hidden');
+      }
+    }
+
+    function setTransferAmount(amt) {
+      document.getElementById('transferAmountInput').value = amt;
+    }
+
+    function executeTransfer() {
+      const amt = Number(document.getElementById('transferAmountInput').value) || 0;
+      const bank = document.getElementById('transferBankSelect').value;
+      const note = document.getElementById('transferNoteInput').value.trim();
+
+      if (amt < 10000) {
+        showToast("Nominal transfer minimal Rp 10.000");
+        return;
+      }
+      if (amt > currentBalance) {
+        showToast("Saldo tabungan tidak mencukupi");
+        return;
+      }
+
+      currentBalance -= amt;
+      updateBalanceUI();
+
+      mutasiData.unshift({
+        id: Date.now(),
+        title: "Transfer ke Fatimah",
+        subtitle: `${bank} • Baru Saja`,
+        amount: -amt,
+        type: "transfer"
+      });
+      renderMutasi();
+
+      showToast(`Transfer ${rupiah(amt)} Berhasil Terkirim!`);
+      
+      setTimeout(() => {
+        document.getElementById('transferAmountInput').value = '';
+        document.getElementById('transferAccountInput').value = '';
+        document.getElementById('verifiedAccountBox').classList.add('hidden');
+        switchScreen('home');
+      }, 1000);
+    }
+
+    // 2. BAYAR / BELI TAGIHAN LOGIC
+    let activeBillType = 'pln';
+    let currentBillAmount = 178500;
+
+    const billPresets = {
+      pln: { label: "Nomor ID Pelanggan / Meter PLN", defaultNum: "54120098411", name: "RIAN NAUFAL", desc: "Tagihan Listrik PLN (Okt 2026):", amount: 178500 },
+      bpjs: { label: "Nomor Virtual Account BPJS Kesehatan", defaultNum: "88888014529148", name: "RIAN NAUFAL (1 Peserta)", desc: "Iuran BPJS Kelas 1:", amount: 150000 },
+      pdam: { label: "Nomor Sambungan PDAM Tirta", defaultNum: "99014285", name: "RIAN NAUFAL", desc: "Tagihan Air Bersih (Okt 2026):", amount: 64200 },
+      pulsa: { label: "Nomor Handphone Operator", defaultNum: "0812-3456-7890", name: "Telkomsel Pra-Bayar", desc: "Paket Pulsa Reguler:", amount: 50000 }
+    };
+
+    function selectBillType(type) {
+      activeBillType = type;
+      ['pln', 'bpjs', 'pdam', 'pulsa'].forEach(t => {
+        const btn = document.getElementById('btnBill' + t.charAt(0).toUpperCase() + t.slice(1));
+        const isSel = t === type;
+        btn.className = isSel 
+          ? "bill-btn p-2 rounded-2xl border border-emeraldMain bg-sageSoft text-emeraldMain flex flex-col items-center gap-1 transition-all"
+          : "bill-btn p-2 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all";
+      });
+
+      const config = billPresets[type];
+      document.getElementById('billInputLabel').textContent = config.label;
+      document.getElementById('billInputNumber').value = config.defaultNum;
+      document.getElementById('billCustomerName').textContent = config.name;
+      document.getElementById('billDescLabel').textContent = config.desc;
+      currentBillAmount = config.amount;
+      document.getElementById('billAmountText').textContent = rupiah(currentBillAmount);
+      document.getElementById('billTotalText').textContent = rupiah(currentBillAmount);
+
+      document.getElementById('pulsaPackageSelector').classList.toggle('hidden', type !== 'pulsa');
+    }
+
+    function setPulsaAmount(val) {
+      currentBillAmount = val;
+      document.getElementById('billAmountText').textContent = rupiah(val);
+      document.getElementById('billTotalText').textContent = rupiah(val);
+    }
+
+    function checkBillInquiry() {
+      showToast("Data tagihan tervalidasi aktif!");
+    }
+
+    function executeBillPayment() {
+      if (currentBillAmount > currentBalance) {
+        showToast("Saldo tidak mencukupi untuk bayar tagihan!");
+        return;
+      }
+
+      currentBalance -= currentBillAmount;
+      updateBalanceUI();
+
+      const titles = { pln: "Tagihan Listrik PLN", bpjs: "Iuran BPJS Kesehatan", pdam: "Tagihan PDAM Tirta", pulsa: "Pulsa Telkomsel" };
+      mutasiData.unshift({
+        id: Date.now(),
+        title: titles[activeBillType] || "Pembayaran Tagihan",
+        subtitle: `No: ${document.getElementById('billInputNumber').value} • Lunas`,
+        amount: -currentBillAmount,
+        type: "bill"
+      });
+      renderMutasi();
+
+      showToast(`Pembayaran ${titles[activeBillType]} Berhasil!`);
+      setTimeout(() => switchScreen('home'), 1000);
+    }
+
+    // 3. TOP UP E-WALLET LOGIC
+    let activeWallet = 'GoPay';
+    let currentTopupAmount = 100000;
+
+    function selectWallet(wallet) {
+      activeWallet = wallet;
+      ['GoPay', 'ShopeePay', 'OVO', 'DANA'].forEach(w => {
+        const btn = document.getElementById('btnWallet' + w);
+        const isSel = w === wallet;
+        btn.className = isSel
+          ? "wallet-btn p-2.5 rounded-2xl border border-emeraldMain bg-sageSoft text-emeraldMain flex flex-col items-center gap-1 transition-all"
+          : "wallet-btn p-2.5 rounded-2xl border border-slate-200 bg-white text-mutedGray flex flex-col items-center gap-1 hover:border-emeraldMain transition-all";
+      });
+      updateTopupBtn();
+    }
+
+    function setTopupAmount(amt) {
+      currentTopupAmount = amt;
+      document.getElementById('topupAmountInput').value = amt;
+      updateTopupBtn();
+    }
+
+    function updateTopupBtn() {
+      const inputVal = Number(document.getElementById('topupAmountInput').value) || currentTopupAmount;
+      document.getElementById('topupBtnText').textContent = `Top Up ${rupiah(inputVal)} ke ${activeWallet}`;
+    }
+
+    document.getElementById('topupAmountInput').addEventListener('input', (e) => {
+      currentTopupAmount = Number(e.target.value) || 0;
+      updateTopupBtn();
+    });
+
+    function executeTopup() {
+      const amt = Number(document.getElementById('topupAmountInput').value) || 0;
+      const phone = document.getElementById('topupPhoneInput').value;
+
+      if (amt < 10000) {
+        showToast("Nominal top up minimal Rp 10.000");
+        return;
+      }
+      if (amt > currentBalance) {
+        showToast("Saldo tidak mencukupi untuk top up");
+        return;
+      }
+
+      currentBalance -= amt;
+      updateBalanceUI();
+
+      mutasiData.unshift({
+        id: Date.now(),
+        title: `Top Up ${activeWallet}`,
+        subtitle: `${phone} • Sukses Instan`,
+        amount: -amt,
+        type: "topup"
+      });
+      renderMutasi();
+
+      showToast(`Top Up ${rupiah(amt)} ke ${activeWallet} Berhasil!`);
+      setTimeout(() => switchScreen('home'), 1000);
+    }
+
+    // 4. ZAKAT CALCULATOR
+    function calculateZakat() {
+      const wealth = Number(document.getElementById('zakatWealthInput').value) || 0;
+      const nisab = 85 * 1200000;
+      const statusEl = document.getElementById('zakatStatus');
+      const amountEl = document.getElementById('zakatAmountVal');
+
+      if (wealth >= nisab) {
+        statusEl.textContent = "Wajib Zakat (Mencapai Nisab)";
+        statusEl.className = "text-emeraldMain font-bold";
+        const zakat = Math.round(wealth * 0.025);
+        amountEl.textContent = rupiah(zakat);
+      } else {
+        statusEl.textContent = "Belum Mencapai Nisab (Infaq Disarankan)";
+        statusEl.className = "text-amber-600 font-bold";
+        amountEl.textContent = rupiah(0);
+      }
+    }
+
+    function payZakatDirect() {
+      const zakatAmt = 2500000;
+      if (zakatAmt > currentBalance) {
+        showToast("Saldo tabungan tidak mencukupi");
+        return;
+      }
+      currentBalance -= zakatAmt;
+      updateBalanceUI();
+
+      mutasiData.unshift({
+        id: Date.now(),
+        title: "Tunaikan Zakat Mal",
+        subtitle: "BAZNAS RI • Amal Jariyah",
+        amount: -zakatAmt,
+        type: "infaq"
+      });
+      renderMutasi();
+
+      showToast("Penyaluran Zakat Rp 2.500.000 via BAZNAS berhasil!");
+      setTimeout(() => switchScreen('home'), 1000);
+    }
+
+    // QRIS MODAL
+    function openQrisModal() {
+      document.getElementById('qrisModal').classList.remove('hidden');
+    }
+    function closeQrisModal() {
+      document.getElementById('qrisModal').classList.add('hidden');
+    }
+
+    // METRICS MODAL
+    function openMetricsModal() {
+      document.getElementById('metricsModal').classList.remove('hidden');
+    }
+    function closeMetricsModal() {
+      document.getElementById('metricsModal').classList.add('hidden');
+    }
+
+    // TOAST
+    let tTimeout;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      const m = document.getElementById('toastMsg');
+      m.textContent = msg;
+      clearTimeout(tTimeout);
+      t.classList.remove('opacity-0', 'translate-y-16');
+      tTimeout = setTimeout(() => {
+        t.classList.add('opacity-0', 'translate-y-16');
+      }, 2500);
+    }
+
+    // INIT
+    window.addEventListener('DOMContentLoaded', () => {
+      updateBalanceUI();
+      renderMutasi();
+    });
+  </script>
+</body>
+</html>
